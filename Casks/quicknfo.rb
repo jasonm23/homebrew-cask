@@ -1,4 +1,4 @@
-cask :v1 => 'quicknfo' do
+cask 'quicknfo' do
   version '1.2'
   sha256 'ee5c03f78ff60e69e776bec39896ac48496915de35fcb3e2bd0d9c20ad92b5bb'
 
@@ -6,7 +6,6 @@ cask :v1 => 'quicknfo' do
   appcast 'https://github.com/The-Master777/QuickNFO/releases.atom'
   name 'QuickNFO'
   homepage 'https://github.com/planbnet/QuickNFO'
-  license :oss
 
   qlplugin 'QuickNFO.qlgenerator'
 end

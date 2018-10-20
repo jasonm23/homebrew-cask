@@ -1,11 +1,12 @@
-cask :v1_1 => 'mamp' do
-  version '3.4'
-  sha256 '4351c048f770b99bc69da6d5240e7b1cff2dbaef485dec7e04327187f3d8df55'
+cask 'mamp' do
+  version '5.1'
+  sha256 'eacac778f533ca14a18c5b1da937fe002a3320976a17aeb3756a8f823529e9d9'
 
   url "https://downloads.mamp.info/MAMP-PRO/releases/#{version}/MAMP_MAMP_PRO_#{version}.pkg"
   name 'MAMP'
   homepage 'https://www.mamp.info/'
-  license :freemium
+
+  depends_on macos: '>= :yosemite'
 
   pkg "MAMP_MAMP_PRO_#{version}.pkg"
 
@@ -13,9 +14,5 @@ cask :v1_1 => 'mamp' do
     set_ownership ['/Applications/MAMP', '/Applications/MAMP PRO']
   end
 
-  uninstall :pkgutil => 'de.appsolute.installer.(mamp|mampacticon|mampendinstall|mamppro).pkg',
-            :delete  => [
-                         '/Applications/MAMP',
-                         '/Applications/MAMP PRO',
-                        ]
+  uninstall pkgutil: 'de.appsolute.installer.(mamp|mampacticon|mampendinstall|mamppro).pkg'
 end

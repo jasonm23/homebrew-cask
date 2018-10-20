@@ -1,4 +1,4 @@
-cask :v1 => 'tokaido' do
+cask 'tokaido' do
   version '2.2'
   sha256 '150f76ada617ad7588803cd987da8f790695eaa2779e55ca4b3405698ab4388c'
 
@@ -6,7 +6,6 @@ cask :v1 => 'tokaido' do
   appcast 'https://github.com/tokaido/tokaidoapp/releases.atom'
   name 'Tokaido'
   homepage 'https://github.com/tokaido/tokaidoapp'
-  license :mit
 
   app 'Tokaido.app'
 end

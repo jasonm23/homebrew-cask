@@ -1,12 +1,11 @@
-cask :v1 => 'mojibar' do
-  version '1.2.0'
-  sha256 '85471afcab61f08c92328ad3267d806caf288d3b554103b5b74929a6be3f577f'
+cask 'mojibar' do
+  version '2.6.2'
+  sha256 '28e9811bb9a43c15f7a7ba9100e86cc5f45e4f53c093cd9f08972fda8694b363'
 
   url "https://github.com/muan/mojibar/releases/download/#{version}/mojibar.zip"
   appcast 'https://github.com/muan/mojibar/releases.atom'
   name 'Mojibar'
   homepage 'https://github.com/muan/mojibar'
-  license :mit
 
   app 'Mojibar-darwin-x64/Mojibar.app'
 end

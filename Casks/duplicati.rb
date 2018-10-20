@@ -1,12 +1,18 @@
-cask :v1 => 'duplicati' do
-  version '1.3.4'
-  sha256 'd97065d012fb929fa4e37b5efab2d246b6aef667f892a95301a1271f704963f2'
+cask 'duplicati' do
+  version '2.0.3.3,2018-04-02'
+  sha256 '427a5ad9fe96ae63b85473b704f379c8d1ba064cfea619475e24cfe2d5ddf238'
 
-  # googlecode.com is the official download host per the vendor homepage
-  url "https://duplicati.googlecode.com/files/Duplicati%20#{version}.dmg"
+  url "https://updates.duplicati.com/beta/duplicati-#{version.before_comma}_beta_#{version.after_comma}.dmg"
+  appcast 'https://github.com/duplicati/duplicati/releases.atom'
   name 'Duplicati'
-  homepage 'http://www.duplicati.com/'
-  license :oss
+  homepage 'https://www.duplicati.com/'
+
+  depends_on formula: 'mono'
 
   app 'Duplicati.app'
+
+  zap trash: [
+               '~/Library/Application Support/Duplicati',
+               '~/.config/Duplicati',
+             ]
 end

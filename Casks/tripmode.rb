@@ -1,18 +1,27 @@
-cask :v1 => 'tripmode' do
-  version :latest
-  sha256 :no_check
+cask 'tripmode' do
+  version '2.2.0-777'
+  sha256 '72274492605661a90e9fdfe0eea06c13fc045f59ff210aa846497b4454b7eac2'
 
-  url 'https://tripmode.ch/TripMode.pkg'
+  url "https://www.tripmode.ch/app/TripMode-#{version}-app.dmg"
+  appcast 'https://www.tripmode.ch/app/appcast.xml'
   name 'TripMode'
-  appcast 'http://updates.tripmode.ch/app/appcast.xml'
   homepage 'https://www.tripmode.ch/'
-  license :freemium
 
-  pkg 'TripMode.pkg'
+  depends_on macos: '>= :yosemite'
 
-  depends_on :macos => '>= :yosemite'
+  app 'TripMode.app'
 
-  uninstall :pkgutil => 'ch.tripmode.pkg.TripMode'
+  uninstall signal:    ['TERM', 'ch.tripmode.TripMode'],
+            launchctl: [
+                         'ch.tripmode.nke.TripMode',
+                         'ch.tripmode.TripMode.HelperTool',
+                       ],
+            delete:    '/Library/PrivilegedHelperTools/ch.tripmode.TripMode.HelperTool'
 
-  zap :delete => '~/Library/Preferences/ch.tripmode.TripMode.plist'
+  zap trash: [
+               '/Library/Application Support/Tripmode',
+               '~/Library/Application Support/Tripmode',
+               '~/Library/Caches/ch.tripmode.TripMode',
+               '~/Library/Preferences/ch.tripmode.TripMode.plist',
+             ]
 end

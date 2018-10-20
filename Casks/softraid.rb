@@ -1,11 +1,12 @@
-cask :v1 => 'softraid' do
-  version '5.1'
-  sha256 '3ce535878cb92e7401f044a683c7e6e2e6ec6576695adac85f15c10c2d9b1548'
+cask 'softraid' do
+  version '5.7'
+  sha256 '8787f42e52dd8e396670b9e7f9a8f38e3c8136125e67d46abb1bdde092b471c4'
 
-  url "http://www.softraid.com/updates/SoftRAID%20#{version}.dmg"
+  url "https://softraid.com/updates/SoftRAID%20#{version}.dmg"
+  appcast 'https://www.softraid.com/pages/support/download_latest_version.html'
   name 'SoftRAID'
-  homepage 'http://www.softraid.com/'
-  license :commercial
+  homepage 'https://www.softraid.com/'
 
   app "SoftRAID #{version}/SoftRAID #{version}.app"
+  app "SoftRAID #{version}/SoftRAID Easy Setup.app"
 end

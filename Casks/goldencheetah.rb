@@ -1,20 +1,14 @@
-cask :v1 => 'goldencheetah' do
-  version '3.2.0'
+cask 'goldencheetah' do
+  version '3.4,3957:551'
+  sha256 'd618a3a1a8c941774830057ed131c2bba3dae3879150580a161c378a1e3fdc09'
 
-  if Hardware::CPU.is_32_bit?
-    sha256 'db408f128ed4e7f20f122d2f6e92cad2accc9b145825e5658b37662db1f64cbe'
-    # github.com is the official download host per the vendor homepage
-    url "https://github.com/GoldenCheetah/GoldenCheetah/releases/download/V#{version.to_f}/GoldenCheetah_#{version}_QT4_32bit.dmg"
-  else
-    sha256 '77a4dc1e73af42390b8eee94646a81a8990e11302fe1b70f50e48ad26c678f49'
-    # github.com is the official download host per the vendor homepage
-    url "https://github.com/GoldenCheetah/GoldenCheetah/releases/download/V#{version.to_f}/GoldenCheetah_#{version}_QT5_64bit.dmg"
-  end
-
+  # github.com/GoldenCheetah/GoldenCheetah was verified as official when first introduced to the cask
+  url "https://github.com/GoldenCheetah/GoldenCheetah/releases/download/V3.4/GoldenCheetah_V#{version.major_minor}_build_#{version.after_comma.before_colon}_Qt#{version.after_colon}_64bit.dmg"
   appcast 'https://github.com/GoldenCheetah/GoldenCheetah/releases.atom'
   name 'GoldenCheetah'
-  homepage 'http://www.goldencheetah.org/'
-  license :gpl
+  homepage 'https://www.goldencheetah.org/'
+
+  depends_on macos: '>= :lion'
 
   app 'GoldenCheetah.app'
 end

@@ -1,16 +1,26 @@
-cask :v1 => 'owncloud' do
-  version '2.0.2.2818'
-  sha256 '99c248edb9872858031d21da2cb598bdd9e4fc4a4e62c6e14626e32b2785d541'
+cask 'owncloud' do
+  version '2.5.0.10516,qt5.10.1'
+  sha256 '5d59305a432bf6e24f456ff5221c8945c7df7cf0e17680645a156c5cf2f7c767'
 
-  url "https://download.owncloud.com/desktop/stable/ownCloud-#{version}.pkg"
+  url "https://download.owncloud.com/desktop/stable/ownCloud-#{version.after_comma}-#{version.before_comma}.pkg"
+  appcast 'https://github.com/owncloud/client/releases.atom'
   name 'ownCloud'
   homepage 'https://owncloud.com/'
-  license :gpl
 
-  pkg "ownCloud-#{version}.pkg"
+  pkg "ownCloud-#{version.after_comma}-#{version.before_comma}.pkg"
 
-  uninstall :pkgutil => [
-                         'com.ownCloud.client',
-                         'com.owncCloud.finderPlugin',
-                        ]
+  uninstall pkgutil: [
+                       'com.ownCloud.client',
+                       'com.owncCloud.finderPlugin',
+                     ]
+
+  zap trash: [
+               '~/Library/Group Containers/9B5WD74GWJ.com.owncloud.desktopclient',
+               '~/Library/Caches/com.owncloud.desktopclient',
+               '~/Library/Application Scripts/com.owncloud.desktopclient.FinderSyncExt',
+               '~/Library/Containers/com.owncloud.desktopclient.FinderSyncExt',
+               '~/Library/Preferences/com.owncloud.desktopclient.plist',
+               '~/Library/Application Support/ownCloud',
+               '~/Library/Preferences/ownCloud',
+             ]
 end

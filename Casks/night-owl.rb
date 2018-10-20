@@ -1,14 +1,15 @@
-cask :v1 => 'night-owl' do
-  version :latest
-  sha256 :no_check
+cask 'night-owl' do
+  version '2.88'
+  sha256 'a1e606d0f90f4c0c768b516abf811c5aa314e0ba8dc9802f65d26b96c3c7e367'
 
-  # null.net is the official download host per the vendor homepage
-  url 'http://aki-null.net/yf/NightOwl.zip'
-  name 'YoruFukurou'
+  # aki-null.net was verified as official when first introduced to the cask
+  url 'https://aki-null.net/yf/NightOwl.zip'
+  appcast 'https://aki-null.net/yf/distribution/changelog_sl_en.html'
   name 'NightOwl'
-  appcast 'https://sites.google.com/site/yorufukurou/distribution/appcast.xml'
+  name 'YoruFukurou'
   homepage 'https://sites.google.com/site/yorufukurou/home-en'
-  license :gratis
+
+  depends_on macos: '>= :sierra'
 
   app 'Night Owl.app'
 end

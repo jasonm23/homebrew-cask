@@ -1,12 +1,11 @@
-cask :v1 => 'pdfkey-pro' do
-  version :latest
-  sha256 :no_check
+cask 'pdfkey-pro' do
+  version '4.3.9'
+  sha256 'c00cd822f0453d87fb296858dc2e85f7617c96c3b67123711a2396ffc2fb46cd'
 
-  # amazonaws.com is the official download host per the vendor homepage
-  url 'https://pdfkeypro.s3.amazonaws.com/PDFKeyPro.dmg'
+  url 'https://pdfkey.com/PDFKeyPro.dmg'
+  appcast 'https://pdfkey.com/PDFKeyProUpdateFX.xml'
   name 'PDFKey Pro'
-  homepage 'http://pdfkey.com'
-  license :freemium
+  homepage 'https://pdfkey.com/'
 
   app 'PDFKey Pro.app'
 end

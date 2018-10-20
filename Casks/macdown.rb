@@ -1,18 +1,26 @@
-cask :v1 => 'macdown' do
-  version '0.5.3'
-  sha256 '1225f0c93f9a54b8df2e0348ed2cfc32eb0ee74bef8ba4006805cd3014ef0af7'
+cask 'macdown' do
+  version '0.7.1'
+  sha256 '4b26fb70b399cd998f226a78f81cd74348da19a8953aca80169fd7d00667496c'
 
-  # github.com is the official download host per the vendor homepage
-  url "https://github.com/uranusjr/macdown/releases/download/v#{version}/MacDown.app.zip"
-  appcast 'https://github.com/uranusjr/macdown/releases.atom',
-          :sha256 => 'c64fa486514c00101c5a44e92a8562f270bb5474e0e4587e085add5cb0a64e70'
+  # github.com/MacDownApp/macdown was verified as official when first introduced to the cask
+  url "https://github.com/MacDownApp/macdown/releases/download/v#{version}/MacDown.app.zip"
+  appcast 'https://macdown.uranusjr.com/sparkle/macdown/stable/appcast.xml'
   name 'MacDown'
-  homepage 'http://macdown.uranusjr.com/'
-  license :mit
+  homepage 'https://macdown.uranusjr.com/'
+
+  auto_updates true
+  depends_on macos: '>= :mountain_lion'
 
   app 'MacDown.app'
-  binary 'MacDown.app/Contents/SharedSupport/bin/macdown'
+  binary "#{appdir}/MacDown.app/Contents/SharedSupport/bin/macdown"
 
-  zap :delete => ['~/Library/Preferences/com.uranusjr.macdown.plist',
-                  '~/Library/Application Support/MacDown']
+  zap trash: [
+               '~/Library/Application Support/MacDown',
+               '~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.uranusjr.macdown.sfl*',
+               '~/Library/Caches/com.uranusjr.macdown',
+               '~/Library/Cookies/com.uranusjr.macdown.binarycookies',
+               '~/Library/Preferences/com.uranusjr.macdown.plist',
+               '~/Library/Saved Application State/com.uranusjr.macdown.savedState',
+               '~/Library/WebKit/com.uranusjr.macdown',
+             ]
 end

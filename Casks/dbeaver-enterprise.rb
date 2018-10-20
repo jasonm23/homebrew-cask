@@ -1,11 +1,15 @@
-cask :v1 => 'dbeaver-enterprise' do
-  version '3.5.4'
-  sha256 '8f52e6ed1cb4764d527c5dca6ce3d85f9680355a373582b26630bf196c8d9097'
+cask 'dbeaver-enterprise' do
+  version '5.2.0'
+  sha256 'e93e137a83f48a5d8abcff8d1de1b115ff5eb6f27a77620d7b47309487ebdb82'
 
-  url "http://dbeaver.jkiss.org/files/#{version}/dbeaver-ee-#{version}-macos.dmg"
+  url "https://dbeaver.com/files/#{version}/dbeaver-ee-#{version}-macos.dmg"
+  appcast 'https://dbeaver.com/product/version.xml'
   name 'DBeaver Enterprise Edition'
-  homepage 'http://dbeaver.jkiss.org/'
-  license :oss
+  homepage 'https://dbeaver.com/'
 
-  app 'Dbeaver.app'
+  app 'DBeaverEE.app'
+
+  caveats do
+    depends_on_java '8+'
+  end
 end

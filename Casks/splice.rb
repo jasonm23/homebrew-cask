@@ -1,25 +1,20 @@
-cask :v1 => 'splice' do
-  version :latest
-  sha256 :no_check
+cask 'splice' do
+  version '3.3.7'
+  sha256 '95bb9ac207fa3e0126ffbf04cdc01dc137661619c9e3796dc0669825e7ae4e2a'
 
-  # amazonaws.com is the official download host per the vendor homepage
-  url 'https://spliceosx.s3.amazonaws.com/Splice.dmg'
-  appcast 'https://splice.com/appcast.xml',
-          :sha256 => '6928a8b8f69fbfe4fb9ddc49fe681a66bb9f0fea433a20961c20aece6c124f50'
+  # splicedesktop.s3-us-west-1.amazonaws.com was verified as official when first introduced to the cask
+  url 'https://splicedesktop.s3-us-west-1.amazonaws.com/darwin/stable/Splice.app.zip'
+  appcast 'https://api.splice.com/v2/desktop/darwin/stable/latest?v=0.0.0'
   name 'Splice'
   homepage 'https://splice.com/'
-  license :gratis
 
-  installer :script => 'Splice Installer.app/Contents/MacOS/Splice Installer',
-            :args => [ '-q' ],
-            :sudo => false
+  app 'Splice.app'
 
-  uninstall :quit => 'com.splice.Splice',
-            :delete => '/Applications/Splice.app'
+  uninstall quit: 'com.splice.Splice'
 
-  zap :delete => [
-                  '~/Library/Application Support/*Splice*',
-                  '~/Library/Caches/com.splice*',
-                  '~/Library/Preferences/com.splice*'
-                 ]
+  zap trash: [
+               '~/Library/Application Support/*Splice*',
+               '~/Library/Caches/com.splice*',
+               '~/Library/Preferences/com.splice*',
+             ]
 end

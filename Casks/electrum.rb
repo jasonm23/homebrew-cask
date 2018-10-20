@@ -1,13 +1,18 @@
-cask :v1 => 'electrum' do
-  version '2.5.4'
-  sha256 '5ba6df66dd73d9fa61bed7227af2664f89e540766cc035bf011b6761febbcaae'
+cask 'electrum' do
+  version '3.2.3'
+  sha256 '6f95797f73e0822fc37afd445981874ae61f231165f16440e521a4bcf4396758'
 
   url "https://download.electrum.org/#{version}/electrum-#{version}.dmg"
-  gpg "#{url}.asc",
-      :key_id => '6694d8de7be8ee5631bed9502bd5824b7f9470e6'
+  appcast 'https://github.com/spesmilo/electrum/releases.atom'
   name 'Electrum'
   homepage 'https://electrum.org/'
-  license :gpl
 
   app 'Electrum.app'
+
+  zap trash: [
+               '~/.electrum',
+               '~/Library/Preferences/Electrum.plist',
+               '~/Library/Preferences/org.org.pythonmac.unspecified.Electrum.plist',
+               '~/Library/Saved Application State/Electrum.savedState',
+             ]
 end

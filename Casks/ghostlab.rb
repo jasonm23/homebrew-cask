@@ -1,12 +1,11 @@
-cask :v1 => 'ghostlab' do
-  version '2.0.9'
-  sha256 'f727fc601cae69089a6099512ced317615e447337b3498cc597e80541b83b38a'
+cask 'ghostlab' do
+  version '3.1.1'
+  sha256 '90a123a3fafd1301888fd71ee98caf963885a52dd4bb09de159dcfefa82f7630'
 
-  url "http://awesome.vanamco.com/Ghostlab2/update/packages/mac/Ghostlab2-#{version}.zip"
-  appcast 'http://awesome.vanamco.com/Ghostlab2/update/ghostlab2-cast.xml'
+  url "https://awesome.vanamco.com/Ghostlab#{version.major}/downloads/Ghostlab#{version.major}.dmg"
+  appcast 'https://www.vanamco.com/ghostlab-downloads/'
   name 'Ghostlab'
-  homepage 'http://vanamco.com/ghostlab/'
-  license :commercial
+  homepage 'https://www.vanamco.com/ghostlab/'
 
-  app 'Ghostlab2.app'
+  app "Ghostlab#{version.major}.app"
 end

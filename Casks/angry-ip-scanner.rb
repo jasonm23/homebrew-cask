@@ -1,13 +1,12 @@
-cask :v1 => 'angry-ip-scanner' do
-  version '3.4'
-  sha256 '56976a6b2d3b62ef3e46626df51eb20a4e849e346a5292bf923481f4efb5da4a'
+cask 'angry-ip-scanner' do
+  version '3.5.3'
+  sha256 '5c80fae298c7042c21a46ba76985ab79303001af8b26ea073712d5bff68c7215'
 
-  # github.com is the official download host per the vendor homepage
-  url "https://github.com/angryziber/ipscan/releases/download/#{version}/ipscan-mac-#{version}.zip"
-  appcast 'https://github.com/angryziber/ipscan/releases.atom'
+  # github.com/angryip/ipscan was verified as official when first introduced to the cask
+  url "https://github.com/angryip/ipscan/releases/download/#{version}/ipscan-mac-#{version}.zip"
+  appcast 'https://github.com/angryip/ipscan/releases.atom'
   name 'Angry IP Scanner'
-  homepage 'http://angryip.org'
-  license :gpl
+  homepage 'https://angryip.org/'
 
   app 'Angry IP Scanner.app'
 end

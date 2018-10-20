@@ -1,40 +1,50 @@
-cask :v1 => 'minecraft-server' do
-  version '1.8.8'
-  sha256 '39aef720dc5309476f56f2e96a516f3dd3041bbbf442cbfd47d63acbd06af31e'
+cask 'minecraft-server' do
+  version '1.13.1,fe123682e9cb30031eae351764f653500b7396c9'
+  sha256 '2ea6047e7651c429228340acd7d1e35f4f6c7af42f59f92b0b1cd476561253d1'
 
-  # amazonaws.com is the official download host per the vendor homepage
-  url "https://s3.amazonaws.com/Minecraft.Download/versions/#{version}/minecraft_server.#{version}.jar"
+  # launcher.mojang.com was verified as official when first introduced to the cask
+  url "https://launcher.mojang.com/v#{version.major}/objects/#{version.after_comma}/server.jar"
+  appcast 'https://minecraft.net/en-us/download/server/'
   name 'Minecraft Server'
   homepage 'https://minecraft.net/'
-  license :unknown    # todo: change license and remove this comment; ':unknown' is a machine-generated placeholder
 
-  container :type => :naked
+  container type: :naked
+
+  # shim script (https://github.com/Homebrew/homebrew-cask/issues/18809)
+  shimscript = "#{staged_path}/minecraft-server.wrapper.sh"
+  binary shimscript, target: 'minecraft-server'
+
+  config_dir = HOMEBREW_PREFIX.join('etc', 'minecraft-server')
 
   preflight do
-    FileUtils.touch "#{staged_path}/minecraft-server"
-    minecraft_server = File.open "#{staged_path}/minecraft-server", 'w'
-    minecraft_server.puts '#!/bin/bash'
-    minecraft_server.puts 'BASEDIR=$(dirname "$(readlink -n $0)")'
-    minecraft_server.puts 'cd $BASEDIR'
-    minecraft_server.puts 'java -Xmx1024M -Xms1024M -jar minecraft_server.1.8.8.jar nogui'
-    minecraft_server.close
+    FileUtils.mkdir_p config_dir
+
+    IO.write shimscript, <<~EOS
+      #!/bin/sh
+      cd '#{config_dir}' && \
+        exec /usr/bin/java -Xmx1024M -Xms1024M -jar '#{staged_path}/server.jar' nogui
+    EOS
   end
 
-  binary 'minecraft-server'
+  eula_file = config_dir.join('eula.txt')
 
   postflight do
-    set_permissions "#{staged_path}/minecraft-server", '+x'
-    system 'minecraft-server'
-
-    file_name = "#{staged_path}/EULA.txt"
-    contents = File.read(file_name).gsub(/false/, 'true')
-    File.open(file_name, 'w') { |file| file.puts contents }
+    system_command shimscript
+    IO.write(eula_file, IO.read(eula_file).sub('eula=false', 'eula=TRUE'))
   end
 
+  uninstall_preflight do
+    FileUtils.rm_f eula_file
+  end
+
+  zap trash: config_dir
+
   caveats do
-    <<-EOS.undent
-      To run this app, type "#{token}" in terminal.
-      To configure the server take a look at the files staged at #{staged_path}
+    depends_on_java
+    <<~EOS
+      Configuration files are located in
+
+        #{config_dir}
     EOS
   end
 end

@@ -1,12 +1,24 @@
-cask :v1 => 'folx' do
-  version '4.2.13332'
-  sha256 '5664c147dc0b848a2705659a206b02293e4b97f13dc1b5976a6e3435f1c41708'
+cask 'folx' do
+  version '5.6'
+  sha256 '7a9404efc698cacfe5155ad461aedfe382011c90bff97e3a709543f5fe0d84eb'
 
-  url "http://www.eltima.com/download/folx-update/downloader_mac_#{version}.dmg"
-  appcast 'http://mac.eltima.com/download/folx-updater/folx.xml'
+  url 'https://cdn.eltima.com/download/downloader_mac.dmg'
+  appcast 'https://cdn.eltima.com/download/folx-updater/folx.xml'
   name 'Folx'
-  homepage 'http://mac.eltima.com/download-manager.html'
-  license :freemium
+  homepage 'https://mac.eltima.com/download-manager.html'
+
+  auto_updates true
 
   app 'Folx.app'
+
+  zap trash: [
+               '~/Library/Application Support/Eltima Software/Folx3',
+               '~/Library/Caches/com.eltima.Folx3',
+               '~/Library/Internet Plug-Ins/Folx3Plugin.plugin',
+               '~/Library/Logs/Folx.log',
+               '~/Library/Logs/Folx3.log',
+               '~/Library/Preferences/com.eltima.Folx3.plist',
+               '~/Library/Preferences/com.eltima.FolxAgent.plist',
+               '~/Library/Saved Application State/com.eltima.Folx3.savedState',
+             ]
 end

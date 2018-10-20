@@ -1,22 +1,17 @@
-cask :v1 => 'nzbget' do
-  version '16.3'
-  sha256 'fe43e60ca7cb8e34fe3efb141c7da6441dd784da39328fc5d8706599bc9f649e'
+cask 'nzbget' do
+  version '20.0'
+  sha256 'f19ce1f4e0721c71f76b86ac17b4dcd32eb1a068765c3b4019231784455d24ea'
 
-  # github.com is the official download host per the vendor homepage
-  url "https://github.com/nzbget/nzbget/releases/download/v#{version}/nzbget-#{version}-bin-osx.zip"
+  # github.com/nzbget/nzbget was verified as official when first introduced to the cask
+  url "https://github.com/nzbget/nzbget/releases/download/v#{version}/nzbget-#{version}-bin-macos.zip"
   appcast 'https://github.com/nzbget/nzbget/releases.atom'
   name 'NZBGet'
-  homepage 'http://nzbget.net'
-  license :gpl
+  homepage 'https://nzbget.net/'
 
   app 'NZBGet.app'
 
-  postflight do
-    suppress_move_to_applications
-  end
-
-  zap :delete => [
-                  '~/Library/Application Support/NZBGet',
-                  '~/Library/Preferences/net.sourceforge.nzbget.plist'
-                 ]
+  zap trash: [
+               '~/Library/Application Support/NZBGet',
+               '~/Library/Preferences/net.sourceforge.nzbget.plist',
+             ]
 end

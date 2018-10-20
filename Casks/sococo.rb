@@ -1,14 +1,13 @@
-cask :v1 => 'sococo' do
-  version '0.2.3-7127'
-  sha256 'a87e533f63567d3334491e475bfc1ead15eb44f87b0700f2076d623df05a65a1'
+cask 'sococo' do
+  version '6.4.0-19484'
+  sha256 '6da5bd6109634ff4a75fe41b3be6ce314e57bd92a4d736e927b04fd1e7f7fd87'
 
-  # amazonaws.com is the official download host per the vendor homepage
-  url "http://s.sococo.com.s3-website-us-east-1.amazonaws.com/rs/client/mac/Sococo-#{version}.dmg"
+  url "https://s.sococo.com/rs/client/mac/Sococo-#{version}.dmg"
+  appcast 'https://s.sococo.com/rs/client/latest.json'
   name 'Sococo'
   homepage 'https://www.sococo.com/'
-  license :freemium
+
+  depends_on macos: '>= :lion'
 
   app 'Sococo.app'
-
-  depends_on :macos => '>= :lion'
 end

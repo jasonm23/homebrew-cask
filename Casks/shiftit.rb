@@ -1,13 +1,21 @@
-cask :v1 => 'shiftit' do
-  version '1.6.3'
-  sha256 '3b01d74cc39e4efad64b2c9b135bea528730cb750c55a386bf74e1203b92ca68'
+cask 'shiftit' do
+  version '1.6.6'
+  sha256 '858045662074579856a521dcf967ddfc818f68583ddc96fe73612d82e071bd00'
 
   url "https://github.com/fikovnik/ShiftIt/releases/download/version-#{version}/ShiftIt-#{version}.zip"
+  appcast 'https://github.com/fikovnik/ShiftIt/releases.atom'
   name 'ShiftIt'
-  appcast 'https://raw.github.com/fikovnik/ShiftIt/develop/release/appcast.xml',
-          :sha256 => 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
-  homepage 'https://github.com/fikovnik/ShiftIt'
-  license :gpl
+  homepage 'https://github.com/fikovnik/ShiftIt/'
+
+  auto_updates true
 
   app 'ShiftIt.app'
+
+  uninstall login_item: 'Shiftit'
+
+  zap trash: [
+               '~/Library/Application Support/ShiftIt',
+               '~/Library/Caches/org.shiftitapp.ShiftIt',
+               '~/Library/Preferences/org.shiftitapp.ShiftIt.plist',
+             ]
 end

@@ -1,13 +1,12 @@
-cask :v1 => 'loadmytracks' do
-  version :latest
-  sha256 :no_check
+cask 'loadmytracks' do
+  version '1.5.3,207'
+  sha256 'c69d73b3cbfca483ac0918c09156237480739bc0a24170b83e395f0ce9d2fa68'
 
-  # cluetrust.com is the official download host per the product homepage
-  url 'https://www.cluetrust.com/Downloads/LoadMyTracks.dmg'
+  # cluetrust.com was verified as official when first introduced to the cask
+  url "https://www.cluetrust.com/Downloads/LoadMyTracks_#{version.after_comma}.dmg"
   appcast 'https://www.cluetrust.com/AppCasts/LoadMyTracks.xml'
   name 'LoadMyTracks'
-  homepage 'http://www.loadmytracks.com/'
-  license :unknown    # todo: change license and remove this comment; ':unknown' is a machine-generated placeholder
+  homepage 'https://www.loadmytracks.com/'
 
   app 'LoadMyTracks.app'
 end

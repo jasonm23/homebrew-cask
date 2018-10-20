@@ -1,11 +1,10 @@
-cask :v1 => 'igetter' do
-  version '2.9.3'
-  sha256 '52bf136958415abf4f6522fca6ee66e19bb35d5f7c523321fbd72add557fe7ae'
+cask 'igetter' do
+  version '2.9.6'
+  sha256 '31acb5393debc5fbb26a8d7a8ff1acf64144422ec127393dbc1a7329d9669a14'
 
-  url "http://www.igetter.net/search/downloads/iGetter#{version}.dmg"
+  url "https://www.igetter.net/search/downloads/iGetter#{version}.dmg"
   name 'iGetter'
-  homepage 'http://www.igetter.net/'
-  license :commercial
+  homepage 'https://www.igetter.net/index.html'
 
   app "iGetter #{version}/iGetter.app"
 end

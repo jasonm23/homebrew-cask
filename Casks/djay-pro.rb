@@ -1,15 +1,11 @@
-cask :v1 => 'djay-pro' do
-  version '1.2-201508141249'
-  sha256 '1abf8861828d6233cf0254b0fe8621f2fb8ce1780201b2d1af1cdb1c3c8463af'
+cask 'djay-pro' do
+  version '2.0.6,201806121430'
+  sha256 'cc2d8ab3c93df39971107a81db75e06c554eb876a517e94cf2e273115654ce7d'
 
-  url "http://download.algoriddim.com/djay/#{version.sub(%r{.*?-},'')}/djay_Pro_#{version.sub(%r{-\d+$},'')}.zip"
-  name 'djay Pro'
-  appcast 'https://www.algoriddim.com/djay-mac/releasenotes/appcast',
-          :sha256 => 'b4289029993baacd8d95e458b65227fdb1c449713efe1696c064e6e2032717e3',
-          :format => :sparkle
-  homepage 'http://algoriddim.com/djay-mac'
-  license :commercial
-  tags :vendor => 'algoriddim'
+  url "http://download.algoriddim.com/djay/#{version.after_comma}/djay_Pro_#{version.before_comma}.zip"
+  appcast 'https://www.algoriddim.com/djay-pro-mac/releasenotes/appcast'
+  name 'Algoriddim djay Pro'
+  homepage 'https://www.algoriddim.com/djay-pro-mac'
 
-  app 'djay Pro.app'
+  app "djay Pro #{version.major}.app"
 end

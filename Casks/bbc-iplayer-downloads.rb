@@ -1,13 +1,11 @@
-cask :v1 => 'bbc-iplayer-downloads' do
-  version '1.14.1'
-  sha256 'a895f1473d9f0d8e9f185bb2a98c0cd56ccf0c4c9b05b8fe3ae705bcf88fcf40'
+cask 'bbc-iplayer-downloads' do
+  version '2.6.3'
+  sha256 '2549d166dcc4de65793a11569f87af48cfb9a9c124937b6a307976299452ca1a'
 
-  # bbci.co.uk is the official download host per the vendor homepage
-  url "http://a.files.bbci.co.uk/iplayer/downloads/BBC-iPlayer-Downloads-#{version}.dmg"
+  # live-downloads-app-bucket-staticassetsbucket-ydn3z4ggyaof.s3.amazonaws.com was verified as official when first introduced to the cask
+  url "https://live-downloads-app-bucket-staticassetsbucket-ydn3z4ggyaof.s3.amazonaws.com/releases/darwin-x64/BBCiPlayerDownloads-#{version}.dmg"
   name 'BBC iPlayer Downloads'
-  appcast 'http://ipd-hq.cloud.bbc.co.uk/downloads/update.xml'
-  homepage 'http://www.bbc.co.uk/iplayer/install'
-  license :gratis
+  homepage 'https://www.bbc.co.uk/iplayer/install'
 
   app 'BBC iPlayer Downloads.app'
 end

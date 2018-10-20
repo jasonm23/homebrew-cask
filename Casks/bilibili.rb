@@ -1,13 +1,19 @@
-cask :v1 => 'bilibili' do
-  version '2.18'
-  sha256 '4827034c5c9ecea1f5cfbdb0ea7a02e8a5061925a3bb50e35f5822240b323617'
+cask 'bilibili' do
+  version '2.56'
+  sha256 '62784fa27396644337c5ee63d6e3ad32e3436aed7eb79009a306ef6100527452'
 
   url "https://github.com/typcn/bilibili-mac-client/releases/download/#{version}/Bilibili.dmg"
+  appcast 'https://github.com/typcn/bilibili-mac-client/releases.atom'
   name 'Bilibili'
-  appcast 'http://app.eqoe.cn/updates/bilimac.xml',
-          :sha256 => '6ced15daa9b5ebe2f55e62c721063b8d0f9b45290e99f4776e1a109489c23e53'
   homepage 'https://github.com/typcn/bilibili-mac-client/'
-  license :gpl
+
+  auto_updates true
 
   app 'Bilibili.app'
+
+  zap trash: [
+               '~/Library/Application Support/com.typcn.bilibili',
+               '~/Library/Application Support/com.crashlytics/com.typcn.bilibili',
+               '~/Library/WebKit/com.typcn.bilibili',
+             ]
 end

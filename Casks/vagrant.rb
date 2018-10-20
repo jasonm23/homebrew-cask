@@ -1,15 +1,21 @@
-cask :v1 => 'vagrant' do
-  version '1.7.4'
-  sha256 '3d2e680cc206ac1d480726052e42e193eabce56ed65fc79b91bc85e4c7d2deb8'
+cask 'vagrant' do
+  version '2.2.0'
+  sha256 '016bf5470cf940df50dceae7fd5f0d333617ca42835f106846c91669b3305255'
 
-  # hashicorp.com is the official download host per the vendor homepage
-  url "https://releases.hashicorp.com/vagrant/#{version}/vagrant_#{version}.dmg"
+  # hashicorp.com/vagrant was verified as official when first introduced to the cask
+  url "https://releases.hashicorp.com/vagrant/#{version}/vagrant_#{version}_x86_64.dmg"
+  appcast 'https://github.com/hashicorp/vagrant/releases.atom'
   name 'Vagrant'
   homepage 'https://www.vagrantup.com/'
-  license :mit
 
-  pkg 'Vagrant.pkg'
+  pkg 'vagrant.pkg'
 
-  uninstall :script => { :executable => 'uninstall.tool', :input => %w[Yes] },
-            :pkgutil => 'com.vagrant.vagrant'
+  uninstall script:  {
+                       executable: 'uninstall.tool',
+                       input:      ['Yes'],
+                       sudo:       true,
+                     },
+            pkgutil: 'com.vagrant.vagrant'
+
+  zap trash: '~/.vagrant.d'
 end

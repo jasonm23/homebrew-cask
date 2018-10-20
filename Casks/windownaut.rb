@@ -1,13 +1,11 @@
-cask :v1 => 'windownaut' do
-  version :latest
-  sha256 :no_check
+cask 'windownaut' do
+  version '1.3.1'
+  sha256 '92b19e6ff6483a3e8279b9a6c495fe6f830fce68d2f09b26a0dbb7859a6de36d'
 
-  url 'http://www.binarybakery.com/products/Windownaut.dmg'
+  url 'https://www.binarybakery.com/products/Windownaut.dmg'
+  appcast 'https://www.binarybakery.com/products/windownaut-appcast.xml'
   name 'Windownaut'
-  appcast 'http://www.binarybakery.com/products/windownaut-appcast.xml',
-          :sha256 => '66a74e75906524b5b52bcdc412e2d3931f0b30ebf508cc47f106922a1bb51df4'
-  homepage 'http://www.binarybakery.com/aprod/windownaut.html'
-  license :commercial
+  homepage 'https://www.binarybakery.com/aprod/windownaut.html'
 
   app 'Windownaut.app'
 end

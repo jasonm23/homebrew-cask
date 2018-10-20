@@ -1,12 +1,11 @@
-cask :v1 => 'androidtool' do
-  version '1.17'
-  sha256 '2e7ba654c4e6f87190cbf48daee6dc5c1ab49a4ffa962543c5749b54db3b7b28'
+cask 'androidtool' do
+  version '1.66'
+  sha256 '4f432ad45660071a1f36c4878bd444dd8bedd520c7c70096e5d7a7907ff7c86a'
 
   url "https://github.com/mortenjust/androidtool-mac/releases/download/#{version}/AndroidTool.zip"
   appcast 'https://github.com/mortenjust/androidtool-mac/releases.atom'
   name 'AndroidTool'
   homepage 'https://github.com/mortenjust/androidtool-mac'
-  license :apache
 
   app 'AndroidTool.app'
 end

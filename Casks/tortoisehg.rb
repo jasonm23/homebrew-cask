@@ -1,11 +1,11 @@
-cask :v1 => 'tortoisehg' do
-  version '3.2.4'
-  sha256 'c529539e20f4ff2f6d181a5c7f64ad5dcd9346605011ab4c3725c7cedf6b5a8c'
+cask 'tortoisehg' do
+  version '4.7.1'
+  sha256 'f87b0e266182508c35db760acb66d966370ee10a260e083f6ad10f4dde9c1047'
 
-  url "https://bitbucket.org/tortoisehg/files/downloads/TortoiseHg-#{version}-mac-x64.zip"
+  # bitbucket.org/tortoisehg/files/downloads was verified as official when first introduced to the cask
+  url "https://bitbucket.org/tortoisehg/files/downloads/TortoiseHg-#{version}-mac-x64-qt5.dmg"
   name 'TortoiseHg'
-  homepage 'http://tortoisehg.bitbucket.org/'
-  license :gpl
+  homepage 'https://tortoisehg.bitbucket.io/'
 
   app 'TortoiseHg.app'
 end

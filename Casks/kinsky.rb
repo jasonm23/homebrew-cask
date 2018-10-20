@@ -1,13 +1,13 @@
-cask :v1 => 'kinsky' do
-  version '4.3.17'
-  sha256 '624d2ee1c2ab62e347b7effe0ec8b1bd32d6e70d9cae6fb62d8fb8e2995c7173'
+cask 'kinsky' do
+  version '4.4.19'
+  sha256 '86be0b0c7b50d65a44a1cac24dc47dce55b5a6dceed36e8d66b8842db31574bc'
 
-  url "http://oss.linn.co.uk/Releases/Kinsky/Davaar/Kinsky_#{version}_osx.pkg"
+  url "https://oss.linn.co.uk/Releases/Kinsky/Davaar/Kinsky_#{version}_osx.pkg"
+  appcast 'https://oss.linn.co.uk/Releases/Kinsky/Davaar/'
   name 'Kinsky'
-  homepage 'http://oss.linn.co.uk/trac/wiki/DownloadKinsky'
-  license :bsd
+  homepage 'https://oss.linn.co.uk/trac/wiki/DownloadKinsky'
 
   pkg "Kinsky_#{version}_osx.pkg"
 
-  uninstall :pkgutil => 'uk.co.linn.Kinsky'
+  uninstall pkgutil: 'uk.co.linn.Kinsky'
 end

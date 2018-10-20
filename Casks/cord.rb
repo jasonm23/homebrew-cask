@@ -1,15 +1,14 @@
-cask :v1 => 'cord' do
+cask 'cord' do
   version '0.5.7'
   sha256 '8f505b12b94167100b3b8b44ed3cee32ffcc94b73dc44fe0ecc896151f114100'
 
-  url "http://downloads.sourceforge.net/sourceforge/cord/CoRD_#{version}.zip"
-  appcast 'http://cord.sourceforge.net/sparkle.xml',
-          :sha256 => '891e1675b678f03d7f050ecb426c28362dab3c92da1592fce8a36afcb7606b69'
+  # downloads.sourceforge.net/cord was verified as official when first introduced to the cask
+  url "https://downloads.sourceforge.net/cord/cord/#{version}/CoRD_#{version}.zip"
+  appcast 'https://cord.sourceforge.io/sparkle.xml'
   name 'CoRD'
-  homepage 'http://cord.sourceforge.net/'
-  license :gpl
+  homepage 'https://cord.sourceforge.io/'
 
   app 'CoRD.app'
 
-  zap :delete => '~/Library/Application Support/CoRD'
+  zap trash: '~/Library/Application Support/CoRD'
 end

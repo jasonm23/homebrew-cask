@@ -1,16 +1,11 @@
-cask :v1 => 'vuescan' do
-  version '9.5.19'
+cask 'vuescan' do
+  version '9.6'
   sha256 :no_check # required as upstream package is updated in-place
 
-  if Hardware::CPU.is_32_bit?
-    url "http://www.hamrick.com/files/vuex32#{version.sub(%r{^(\d+)\.(\d+).*},'\1\2')}.dmg"
-  else
-    url "http://www.hamrick.com/files/vuex64#{version.sub(%r{^(\d+)\.(\d+).*},'\1\2')}.dmg"
-  end
-
+  url "https://www.hamrick.com/files/vuex64#{version.no_dots}.dmg"
+  appcast 'https://www.hamrick.com/alternate-versions.html'
   name 'VueScan'
-  homepage 'http://www.hamrick.com'
-  license :commercial
+  homepage 'https://www.hamrick.com/'
 
   app 'VueScan.app'
 end

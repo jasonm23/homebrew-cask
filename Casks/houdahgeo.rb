@@ -1,15 +1,12 @@
-cask :v1 => 'houdahgeo' do
-  version '4.3.2'
-  sha256 '1d88f16a159608cf4e2a432609a3b0d0a86e53bb1b42cbac9b21899185a9ff02'
+cask 'houdahgeo' do
+  version '5.2.3'
+  sha256 '954725c475367c8d6f65c258b8da5d1d50ce9680eadfe96a3f445329153ff166'
 
-  url "http://houdah.com/houdahGeo/download_assets/HoudahGeo#{version}.zip"
-  appcast "http://www.houdah.com/houdahGeo/updates#{version.to_i}/profileInfo.php",
-          :sha256 => '35e84cc740c5f5ee1fcfd1936946a63ea58b97c1b2bad97b4e84d5b3446c5aeb'
+  url "https://www.houdah.com/houdahGeo/download_assets/HoudahGeo#{version}.zip"
   name 'HoudahGeo'
-  homepage 'http://houdah.com/houdahGeo/'
-  license :commercial
+  homepage 'https://www.houdah.com/houdahGeo/'
 
-  depends_on :macos => '>= :mountain_lion'
+  depends_on macos: '>= :mountain_lion'
 
   app 'HoudahGeo.app'
 end

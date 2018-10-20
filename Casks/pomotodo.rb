@@ -1,14 +1,12 @@
-cask :v1 => 'pomotodo' do
-  version :latest
-  sha256 :no_check
+cask 'pomotodo' do
+  version '3.4.2,1508736942'
+  sha256 '7726496a48eeb2901c9762de2a2df743b2010e7ad0b6ccd2cab5a4f49a496f93'
 
-  # hackplan.com is the official download host per the vendor homepage
-  url 'http://air.hackplan.com/v1/p/com.pomotodo.PomotodoMac/download'
+  # cdn.hackplan.com/theair was verified as official when first introduced to the cask
+  url "https://cdn.hackplan.com/theair/#{version.after_comma}/Pomotodo.#{version.before_comma}.dmg"
+  appcast "https://air.pomotodo.com/v1/p/com.pomotodo.PomotodoMac#{version.major}/latest.xml"
   name 'Pomodoro'
-  appcast 'http://air.hackplan.com/projects/5455f382437315386000d4d5/versions/latest.xml',
-          :sha256 => '6babb8c063ac36c7769d50564f143eafe510d6e07a3ed6ea4375f8433e27ae28'
-  homepage 'https://pomotodo.com'
-  license :gratis
+  homepage 'https://pomotodo.com/'
 
   app 'Pomotodo.app'
 end

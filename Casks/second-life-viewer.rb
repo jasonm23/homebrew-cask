@@ -1,19 +1,17 @@
-cask :v1 => 'second-life-viewer' do
-  version '3.8.1.303130'
-  sha256 'eecb67fbbba4b988a858a83318d87d5f99451dbfa567b75d4bd91059904bca42'
+cask 'second-life-viewer' do
+  version '5.1.9.519298'
+  sha256 'e35bc3925a4f3b7b7f76fdd3d304734d37de083827143990776a29d218e95554'
 
-  url "http://download.cloud.secondlife.com/Viewer_3/Second_Life_#{version.gsub('.','_')}_i386.dmg"
-  name 'Second Life Viewer'
+  url "http://download.cloud.secondlife.com/Viewer_#{version.major}/Second_Life_#{version.dots_to_underscores}_x86_64.dmg"
+  name 'Linden Lab Second Life Viewer'
   homepage 'https://secondlife.com/'
-  license :gpl
-  tags :vendor => 'Linden Lab'
+
+  depends_on macos: '>= :lion'
 
   app 'Second Life Viewer.app'
 
-  depends_on :macos => '>= :lion'
-
-  zap :delete => [
-                  '~/Library/Application Support/SecondLife',
-                  '~/Library/Caches/SecondLife',
-                 ]
+  zap trash: [
+               '~/Library/Application Support/SecondLife',
+               '~/Library/Caches/SecondLife',
+             ]
 end

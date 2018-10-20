@@ -1,12 +1,11 @@
-cask :v1 => 'navicat-for-mariadb' do
-  version '11.1.15'
-  sha256 '564b7ae8f50f6c541fa3f61fe7889ca1cd2a180025b40033d35d7837ec1cedd1'
+cask 'navicat-for-mariadb' do
+  version '12.1.9'
+  sha256 'f5279ccc4a3a62c3b087af6f6f7b45ba62eec39dc627ec0d4dbc81d7d80a378c'
 
-  url "http://download.navicat.com/download/navicat#{version.sub(%r{^(\d+)\.(\d+).*},'\1\2')}_mariadb_en.dmg"
+  url "http://download.navicat.com/download/navicat#{version.major_minor.no_dots}_mariadb_en.dmg"
+  appcast 'https://www.navicat.com/en/products/navicat-for-mariadb-release-note'
   name 'Navicat for MariaDB'
-  homepage 'http://www.navicat.com/products/navicat-for-mariadb'
-  license :commercial
-  tags :vendor => 'Navicat'
+  homepage 'https://www.navicat.com/products/navicat-for-mariadb'
 
   app 'Navicat for MariaDB.app'
 end

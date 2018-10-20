@@ -1,12 +1,11 @@
-cask :v1 => 'navicat-for-sql-server' do
-  version '11.1.15'
-  sha256 'fc85b72dcab03dc9597192d29bdc79e02916b80b7e61ffb425676862d9e54c62'
+cask 'navicat-for-sql-server' do
+  version '12.1.9'
+  sha256 '41512d07ac65f78b1630822d578fb641c413cd54afd9bf2a122bf62e4f3963ba'
 
-  url "http://download.navicat.com/download/navicat#{version.sub(%r{^(\d+)\.(\d+).*},'\1\2')}_sqlserver_en.dmg"
+  url "http://download.navicat.com/download/navicat#{version.major_minor.no_dots}_sqlserver_en.dmg"
+  appcast 'https://www.navicat.com/products/navicat-for-sqlserver-release-note'
   name 'Navicat for SQL Server'
-  homepage 'http://www.navicat.com/products/navicat-for-sqlserver'
-  license :commercial
-  tags :vendor => 'Navicat'
+  homepage 'https://www.navicat.com/products/navicat-for-sqlserver'
 
   app 'Navicat For SQL Server.app'
 end

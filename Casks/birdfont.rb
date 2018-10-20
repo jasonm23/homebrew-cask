@@ -1,11 +1,12 @@
-cask :v1 => 'birdfont' do
-  version '2.10.5'
-  sha256 'e1bb495069d6f68664d32386d90f1b7d128467307754a2e9315efd9f2b477428'
+cask 'birdfont' do
+  version '3.12.12'
+  sha256 '30378755f0ed14d69460039a032e42c3b15f29caa5d1568b1d7d83bf4d1e544d'
 
   url "https://birdfont.org/download/birdfont-#{version}-free.dmg"
   name 'BirdFont'
   homepage 'https://birdfont.org/'
-  license :freemium
 
-  app 'BirdFont.app'
+  depends_on macos: '>= :sierra'
+
+  app 'BirdFontNonCommercial.app'
 end

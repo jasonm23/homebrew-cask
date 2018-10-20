@@ -1,11 +1,11 @@
-cask :v1 => 'mixxx' do
-  version '1.11.0'
-  sha256 '21fa06153a1a019c001f96024caa940ea6307a29f4cebd334fb2b7f071013314'
+cask 'mixxx' do
+  version '2.1.4'
+  sha256 '99bbbf6df635bc238c07a374b890e56597d2f82a6fe073d81accbbaf3a308002'
 
-  url "http://downloads.mixxx.org/mixxx-#{version}/mixxx-#{version}-macintel.dmg"
+  url "https://downloads.mixxx.org/mixxx-#{version}/mixxx-#{version}-osxintel.dmg"
+  appcast 'https://www.mixxx.org/download/'
   name 'Mixxx'
-  homepage 'http://www.mixxx.org'
-  license :gpl
+  homepage 'https://www.mixxx.org/'
 
   app 'Mixxx.app'
 end

@@ -1,13 +1,11 @@
-cask :v1 => 'delicious-library' do
-  version '3.3.5'
-  sha256 '7f039110430f02013e217ab2ca6c3aba1922f795961ee744d8465d155f004104'
+cask 'delicious-library' do
+  version '3.8.2'
+  sha256 'd3118edde50f9d50c0e30d76870d6a412fcdd218562c031c64eec2f04b5a8ed0'
 
-  url "https://delicious-monster.com/downloads/DeliciousLibrary3/v#{version}/DeliciousLibrary3.zip"
+  url "https://delicious-monster.com/downloads/DeliciousLibrary#{version.major}/v#{version}/DeliciousLibrary#{version.major}.zip"
+  appcast "https://www.delicious-monster.com/downloads/DeliciousLibrary#{version.major}.xml"
   name 'Delicious Library'
-  appcast 'https://www.delicious-monster.com/downloads/DeliciousLibrary3.xml',
-          :sha256 => '5f9eaea34e47cd1255f02a48ddca41433cd27aec146387a3221d1267b286c6e6'
   homepage 'https://delicious-monster.com/'
-  license :commercial
 
-  app 'Delicious Library 3.app'
+  app "Delicious Library #{version.major}.app"
 end

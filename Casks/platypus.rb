@@ -1,13 +1,13 @@
-cask :v1 => 'platypus' do
-  version '4.9'
-  sha256 'f28ed1f0c3f4d4109c55d580dbf69950ad865fa7e91f32bc64d592546f382c6a'
+cask 'platypus' do
+  version '5.2'
+  sha256 '09d6511a62a6965b0d69c7e92455ead70853c299bf1649ea52ba00e528cb34f4'
 
-  url "http://sveinbjorn.org/files/software/platypus/platypus#{version}.zip"
-  appcast 'http://www.sveinbjorn.org/files/appcasts/PlatypusAppcast.xml',
-          :sha256 => '21e37d2b32951108d7d0a4a6cda34b96bd97c4e82338c42583b6498c482239ec'
+  url "https://sveinbjorn.org/files/software/platypus/platypus#{version}.zip"
+  appcast 'https://www.sveinbjorn.org/files/appcasts/PlatypusAppcast.xml'
   name 'Platypus'
-  homepage 'http://sveinbjorn.org/platypus'
-  license :bsd
+  homepage 'https://sveinbjorn.org/platypus'
+
+  auto_updates true
 
   app "Platypus-#{version}/Platypus.app"
 end

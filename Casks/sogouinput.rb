@@ -1,14 +1,33 @@
-cask :v1 => 'sogouinput' do
-  version '3.3.0.74249'
-  sha256 'b9d80a202f5c7143ea7640015d9d73cf67b5e379f296af9f8c406edb233873c7'
+cask 'sogouinput' do
+  version '48a,1535352534'
+  sha256 '8699b3e9080b7aaee2a19950b40e86a3f54b7ff8b09308aba116d26643bc63be'
 
-  url 'http://download.ime.sogou.com/1443062217/sogou_mac_33d.dmg'
-  name '搜狗输入法'
+  url "http://cdn2.ime.sogou.com/dl/index/#{version.after_comma}/sogou_mac_#{version.before_comma}.zip"
   name 'Sogou Input Method'
-  homepage 'http://pinyin.sogou.com/mac/'
-  license :gratis
+  name '搜狗输入法'
+  homepage 'https://pinyin.sogou.com/mac/'
 
-  installer :manual => '安装搜狗输入法.app'
+  installer manual: 'sogou_mac_48a.app'
 
-  uninstall :delete => '/Library/Input Methods/SogouInput.app'
+  uninstall delete:    [
+                         '/Library/Input Methods/SogouInput.app',
+                         '/Library/QuickLook/SogouSkinFileQuickLook.qlgenerator',
+                       ],
+            launchctl: 'com.sogou.SogouServices'
+
+  zap trash: [
+               '~/.sogouinput',
+               '~/Library/Application Support/Sogou/EmojiPanel',
+               '~/Library/Application Support/Sogou/InputMethod',
+               '~/Library/Caches/SogouServices',
+               '~/Library/Caches/com.sogou.SGAssistPanel',
+               '~/Library/Caches/com.sogou.SogouPreference',
+               '~/Library/Caches/com.sogou.inputmethod.sogou',
+               '~/Library/Cookies/SogouServices.binarycookies',
+               '~/Library/Cookies/com.sogou.SogouPreference.binarycookies',
+               '~/Library/Cookies/com.sogou.inputmethod.sogou.binarycookies',
+               '~/Library/Preferences/com.sogou.SogouPreference.plist',
+               '~/Library/Saved Application State/com.sogou.SogouInstaller.savedState',
+             ],
+      rmdir: '~/Library/Application Support/Sogou'
 end

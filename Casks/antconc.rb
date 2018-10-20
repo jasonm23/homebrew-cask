@@ -1,11 +1,11 @@
-cask :v1 => 'antconc' do
-  version '3.4.3'
-  sha256 'c63b9a9fd60a97c8551c6fa2902663568be9cdabee5601a2fe99715f47921421'
+cask 'antconc' do
+  version '3.5.7'
+  sha256 '660fb0df5376544c41bb3d7c4b4c22cd11d2d20d09e1c895cc342713089890be'
 
-  url "http://www.laurenceanthony.net/software/antconc/releases/AntConc#{version.delete('.')}/AntConc.zip"
+  url "https://www.laurenceanthony.net/software/antconc/releases/AntConc#{version.no_dots}/AntConc.zip"
+  appcast 'https://www.laurenceanthony.net/software/antconc/releases/'
   name 'AntConc'
-  homepage 'http://www.laurenceanthony.net/software/antconc'
-  license :gratis
+  homepage 'https://www.laurenceanthony.net/software/antconc/'
 
   app 'AntConc.app'
 end

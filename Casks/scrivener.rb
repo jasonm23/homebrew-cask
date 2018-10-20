@@ -1,13 +1,14 @@
-cask :v1 => 'scrivener' do
-  version :latest
-  sha256 :no_check
+cask 'scrivener' do
+  version '3.0.3,3032'
+  sha256 '776aa7a4ed46f6894bce4a15b4f4a53ea31044b6f2192fbd29234b3ddfd0c24a'
 
-  # amazonaws.com is the official download host per the vendor homepage
-  url 'https://scrivener.s3.amazonaws.com/Scrivener.dmg'
-  appcast 'https://www.literatureandlatte.com/downloads/scrivener-2.xml'
+  # scrivener.s3.amazonaws.com was verified as official when first introduced to the cask
+  url "https://scrivener.s3.amazonaws.com/mac_updates/Scrivener_1012_#{version.after_comma}.zip"
+  appcast "https://www.literatureandlatte.com/downloads/scrivener-#{version.major}.xml"
   name 'Scrivener'
   homepage 'https://literatureandlatte.com/scrivener.php'
-  license :commercial
+
+  depends_on macos: '>= :sierra'
 
   app 'Scrivener.app'
 end

@@ -1,17 +1,11 @@
-cask :v1 => 'schnapps' do
-  version :latest
-  sha256 :no_check
+cask 'schnapps' do
+  version '1.2'
+  sha256 'aa47011ead3fd64f3263641fe93f6fdf52945763df39295c3abf6aa5ae7f5fe0'
 
-  url 'http://d15xn61otjv90c.cloudfront.net/download/Schnapps_latest.zip'
+  url "http://www.schnappsformac.com/download/Schnapps_v#{version}.zip"
+  appcast 'http://schnappsformac.com/download/appcast.xml'
   name 'Schnapps'
-  appcast 'http://schnappsformac.com/download/appcast.xml',
-          :sha256 => '1fa261b1b268b99f43353523c760d602ae10e41ae1a7daeadeb98e9d9fae4f4b'
   homepage 'http://schnappsformac.com/'
-  license :commercial
 
   app 'Schnapps.app'
-
-  postflight do
-    suppress_move_to_applications
-  end
 end

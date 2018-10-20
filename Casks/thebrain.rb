@@ -1,11 +1,10 @@
-cask :v1 => 'thebrain' do
-  version '8.0.1.8'
-  sha256 'c8bac038d1aa041f03868dc9e1436e12935b467398b40f8dd9188d8b1f9ab751'
+cask 'thebrain' do
+  version '9.1.18.0'
+  sha256 '05bc47b98d230ac790fc622a5b18a23b72d8873ec752cb5bc437e81ab47c8d5b'
 
-  url "http://assets.thebrain.com/downloads/TheBrain_macos_JRE_#{version.gsub('.', '_')}.dmg"
+  url "http://updater.thebrain.com/files/TheBrain#{version}.dmg"
   name 'TheBrain'
   homepage 'https://www.thebrain.com/'
-  license :commercial
 
-  app 'TheBrain.app'
+  app "TheBrain #{version.major}.app"
 end

@@ -1,13 +1,14 @@
-cask :v1 => 'tokens' do
-  version :latest
-  sha256 :no_check
+cask 'tokens' do
+  version '1.6.4-69'
+  sha256 'c677ebe19256191ee6bbb54ed59499fbef25faa9530eaa6b2ec4c8b51b262a9a'
 
-  url 'http://usetokens.com/latest'
+  # peerassembly.net/apps/tokens was verified as official when first introduced to the cask
+  url "https://peerassembly.net/apps/tokens/#{version}/Tokens.zip"
+  appcast 'https://peerassembly.net/apps/tokens/stable.xml'
   name 'Tokens'
-  appcast 'http://api.usetokens.com/updates/stable',
-          :sha256 => '87feb75f006cd8570bf7d11102e43576e7e6c9a3558454ebaf19376d587e3bc3'
-  homepage 'http://usetokens.com/'
-  license :closed
+  homepage 'https://usetokens.com/'
+
+  auto_updates true
 
   app 'Tokens.app'
 end

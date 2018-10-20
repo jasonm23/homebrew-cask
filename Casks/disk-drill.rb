@@ -1,21 +1,19 @@
-cask :v1 => 'disk-drill' do
-  version '2.4.426'
-  sha256 '91107b0866bdc19d997f5dcfd3360dc3cace5afe9b072cd78f9f0146073694ec'
+cask 'disk-drill' do
+  version '3.6.916'
+  sha256 '942e4fff67a832848b6e232b0d13e4ee8b66084d3e45869da553c9e12c7fd888'
 
-  url "http://www.cleverfiles.com/releases/DiskDrill_#{version}.zip"
-  appcast 'http://www.cleverfiles.com/releases/auto-update/dd2-newestr.xml',
-          :sha256 => '13eb31a4e92818faf847cc8d484ebed32750341f15faff6ef205921372efc9d8'
+  url "https://www.cleverfiles.com/releases/DiskDrill_#{version}.zip"
+  appcast 'https://www.cleverfiles.com/releases/auto-update/dd2-newestr.xml'
   name 'Disk Drill'
-  homepage 'http://www.cleverfiles.com/'
-  license :freemium
+  homepage 'https://www.cleverfiles.com/'
 
   app 'Disk Drill.app'
 
-  uninstall :delete => '/Library/Application Support/CleverFiles'
+  uninstall delete: '/Library/Application Support/CleverFiles'
 
-  zap :delete => [
-                  '~/Library/Application Support/DiskDrill',
-                  '~/Library/Caches/com.cleverfiles.Disk_Drill',
-                  '~/Library/Logs/DiskDrill.log',
-                 ]
+  zap trash: [
+               '~/Library/Application Support/DiskDrill',
+               '~/Library/Caches/com.cleverfiles.Disk_Drill',
+               '~/Library/Logs/DiskDrill.log',
+             ]
 end

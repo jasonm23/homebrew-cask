@@ -1,25 +1,35 @@
-cask :v1 => 'bartender' do
-  version '2.0.5'
-  sha256 '7a114172ca5c3dfdc38f9d056b7d208d471e814c8c1dae5f0408bea2e71eadc9'
-
-  url "http://macbartender.com/B2/updates/#{version.gsub('.', '-')}/Bartender%202.zip",
-      :referer => 'http://www.macbartender.com'
-  name 'Bartender'
-  appcast 'http://www.macbartender.com/B2/updates/updates.php',
-          :sha256 => '0b62d11944fefe4cb3ccdca722c8faedd205de5a01f0159ed967f0bda651943a'
-  homepage 'http://www.macbartender.com/'
-  license :commercial
-
-  app 'Bartender 2.app'
-
-  postflight do
-    suppress_move_to_applications
+cask 'bartender' do
+  if MacOS.version <= :el_capitan
+    version '2.1.6'
+    sha256 '013bb1f5dcc29ff1ecbc341da96b6e399dc3c85fc95bd8c7bee153ab0d8756f5'
+  else
+    version '3.0.47'
+    sha256 '8c92401a39471edc1e151850901991e8d1d25c14c92e2fe3ca3d74791608cb6c'
   end
 
-  zap :delete => [
-                  '/Library/ScriptingAdditions/BartenderHelper.osax',
-                  '~/Library/Preferences/com.surteesstudios.Bartender.plist',
-                  '/Library/PrivilegedHelperTools/com.surteesstudios.Bartender.BartenderInstallHelper',
-                  '/System/Library/ScriptingAdditions/BartenderSystemHelper.osax'
-                 ]
+  url "https://macbartender.com/B2/updates/#{version.dots_to_hyphens}/Bartender%20#{version.major}.zip",
+      referer: 'https://www.macbartender.com'
+  appcast 'https://www.macbartender.com/B2/updates/Appcast.xml'
+  name 'Bartender'
+  homepage 'https://www.macbartender.com/'
+
+  auto_updates true
+
+  app "Bartender #{version.major}.app"
+
+  uninstall delete:     [
+                          '/Library/Audio/Plug-Ins/HAL/BartenderAudioPlugIn.plugin',
+                          '/Library/PrivilegedHelperTools/com.surteesstudios.Bartender.BartenderInstallHelper',
+                          '/Library/ScriptingAdditions/BartenderHelper.osax',
+                          '/System/Library/ScriptingAdditions/BartenderSystemHelper.osax',
+                        ],
+            launchctl:  'com.surteesstudios.Bartender.BartenderInstallHelper',
+            login_item: "Bartender #{version.major}",
+            quit:       'com.surteesstudios.Bartender'
+
+  zap trash: [
+               '~/Library/Caches/com.surteesstudios.Bartender',
+               '~/Library/Cookies/com.surteesstudios.Bartender.binarycookies',
+               '~/Library/Preferences/com.surteesstudios.Bartender.plist',
+             ]
 end

@@ -1,13 +1,12 @@
-cask :v1 => 'silverback' do
-  version :latest
-  sha256 :no_check
+cask 'silverback' do
+  version '3.1.8,237:1516782103'
+  sha256 'd4dd7c17a07bfcf7923e905a67eb7895febdf78d3c72ddb5980c59051e3a38f1'
 
-  # amazonaws.com is the official download host per the vendor homepage
-  url 'https://silverback.s3.amazonaws.com/silverback2.zip'
-  appcast 'https://silverback.s3.amazonaws.com/release/appcast.xml'
+  # dl.devmate.com/uk.co.clearleft.SilverbackMac was verified as official when first introduced to the cask
+  url "https://dl.devmate.com/uk.co.clearleft.SilverbackMac/#{version.after_comma.before_colon}/#{version.after_colon}/Silverback-#{version.after_comma.before_colon}.zip"
+  appcast 'https://updates.devmate.com/uk.co.clearleft.SilverbackMac.xml'
   name 'Silverback'
-  homepage 'http://silverbackapp.com/'
-  license :unknown    # todo: change license and remove this comment; ':unknown' is a machine-generated placeholder
+  homepage 'https://silverbackapp.com/'
 
   app 'Silverback.app'
 end

@@ -1,19 +1,19 @@
-cask :v1 => 'ccleaner' do
-  version '1.10.335'
-  sha256 '9f02434fb991c78634fd1a6a2a3819ecedd567fbe07fe7eec96bbf5628f6eadd'
+cask 'ccleaner' do
+  version '1.15.507'
+  sha256 '3795e8cff1404237838936fe1d17a29b645126bb32bff8873f8ece81a6c7b227'
 
-  url "http://download.piriform.com/mac/CCMacSetup#{version.sub(%r{^(\d+)\.(\d+).*},'\1\2')}.dmg"
-  name 'CCleaner'
-  homepage 'https://www.piriform.com/ccleaner'
-  license :freemium
-  tags :vendor => 'Piriform'
-
-  zap :delete => [
-    '~/Library/Application Support/CCleaner',
-    '~/Library/Caches/com.piriform.ccleaner',
-    '~/Library/Preferences/com.piriform.ccleaner.plist',
-    '~/Library/Saved Application State/com.piriform.ccleaner.savedState'
-  ]
+  url "https://download.ccleaner.com/mac/CCMacSetup#{version.major_minor.no_dots}.dmg"
+  name 'Piriform CCleaner'
+  homepage 'https://www.ccleaner.com/ccleaner-mac'
 
   app 'CCleaner.app'
+
+  zap trash: [
+               '~/Library/Application Support/CCleaner',
+               '~/Library/Caches/com.piriform.ccleaner',
+               '~/Library/Preferences/com.piriform.ccleaner.plist',
+               '~/Library/Saved Application State/com.piriform.ccleaner.savedState',
+               '~/Library/Cookies/com.piriform.ccleaner.binarycookies',
+               '/Users/Shared/CCleaner',
+             ]
 end

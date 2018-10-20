@@ -1,13 +1,11 @@
-cask :v1 => 'cyberghost' do
-  version '5.0.14.11'
-  sha256 'c1f10d6734482b319d66ef546cf31c35f9386b1befd80de6495e48f47c9d610e'
+cask 'cyberghost' do
+  version '5.0.15.5'
+  sha256 '197e9501953861f0265c415b58f6a8983d97530860885f3135f6f75aeb9f5985'
 
   url "https://download.cyberghostvpn.com/mac/cg5mac_#{version}.dmg"
+  appcast 'https://download.cyberghostvpn.com/mac/updates/cyberghost_mac_update.inf'
   name 'CyberGhost'
-  appcast 'https://download.cyberghostvpn.com/mac/updates/cyberghost_mac_update.inf',
-          :sha256 => '47b058275557f590e834a9ca94f67f697d05565b020a437251377df35564c9fc'
   homepage 'https://www.cyberghostvpn.com/'
-  license :gratis
 
-  app 'CyberGhost 5.app'
+  app "CyberGhost #{version.major}.app"
 end

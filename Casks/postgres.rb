@@ -1,13 +1,28 @@
-cask :v1 => 'postgres' do
-  version '9.4.5.0'
-  sha256 'ce3018430d7a783b2211c153aa9d7ab6197a39356668b516b9086fd0b5084e6a'
+cask 'postgres' do
+  version '2.2'
+  sha256 'd30cb345bd94f9793101a11e75974ab73528288e663e010cd423708132508e64'
 
-  # github.com is the official download host per the vendor homepage
-  url "https://github.com/PostgresApp/PostgresApp/releases/download/#{version}/Postgres-#{version}.zip"
+  # github.com/PostgresApp/PostgresApp was verified as official when first introduced to the cask
+  url "https://github.com/PostgresApp/PostgresApp/releases/download/v#{version}/Postgres-#{version}-9.5-9.6-10-11.dmg"
   appcast 'https://github.com/PostgresApp/PostgresApp/releases.atom'
   name 'Postgres'
-  homepage 'http://postgresapp.com/'
-  license :oss
+  homepage 'https://postgresapp.com/'
+
+  auto_updates true
+  depends_on macos: '>= :sierra'
 
   app 'Postgres.app'
+
+  uninstall launchctl: "com.postgresapp.Postgres#{version.major}LoginHelper",
+            quit:      [
+                         "com.postgresapp.Postgres#{version.major}",
+                         "com.postgresapp.Postgres#{version.major}MenuHelper",
+                       ]
+
+  zap trash: [
+               '~/Library/Application Support/Postgres',
+               "~/Library/Caches/com.postgresapp.Postgres#{version.major}",
+               "~/Library/Cookies/com.postgresapp.Postgres#{version.major}.binarycookies",
+               "~/Library/Preferences/com.postgresapp.Postgres#{version.major}.plist",
+             ]
 end

@@ -1,12 +1,11 @@
-cask :v1 => 'x-lite' do
-  version '4.9.0_78102'
-  sha256 'a92c4d2f15f4969a5204ca470f55c0e174a2c759d716ff14ec5b952a0d90bbcf'
+cask 'x-lite' do
+  version '5.3.3_92984'
+  sha256 '107fd6a6e9c727ba3d1d5a0126e5d2bb9e6631180a86fdbd13e41666b090a4b1'
 
-  # amazonaws.com is the official download host per the vendor homepage
-  url "http://counterpath.s3.amazonaws.com/downloads/X-Lite_#{version}.dmg"
+  # counterpath.s3.amazonaws.com was verified as official when first introduced to the cask
+  url "https://counterpath.s3.amazonaws.com/downloads/X-Lite_#{version}.dmg"
   name 'X-Lite'
-  homepage 'http://www.counterpath.com/x-lite/'
-  license :commercial
+  homepage 'https://www.counterpath.com/x-lite/'
 
   app 'X-Lite.app'
 end

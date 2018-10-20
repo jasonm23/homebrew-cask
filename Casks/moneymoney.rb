@@ -1,12 +1,11 @@
-cask :v1 => 'moneymoney' do
-  version :latest
-  sha256 :no_check
+cask 'moneymoney' do
+  version '2.3.7'
+  sha256 'aed6e69a2721301f3c849ff9f70c8c52d5e15716792a21446e822206483633fc'
 
-  url 'https://moneymoney-app.com/download/MoneyMoney.zip'
-  appcast 'https://moneymoney-app.com/update/appcast.xml'
+  url 'https://service.moneymoney-app.com/1/MoneyMoney.zip'
+  appcast 'https://service.moneymoney-app.com/1/Appcast.xml'
   name 'MoneyMoney'
   homepage 'https://moneymoney-app.com/'
-  license :commercial
 
   app 'MoneyMoney.app'
 end

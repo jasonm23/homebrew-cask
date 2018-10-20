@@ -1,20 +1,23 @@
-cask :v1 => 'scratch' do
-  version '437'
-  sha256 '3615721aaffc5f94512887afd5a470488bd2d33c952137c1a89a3fa1830b91a5'
+cask 'scratch' do
+  version '2.0,461'
+  sha256 'dcd311b455be8c19861df3b1077c4175b168688ea8e69296a3f5aee6192a13e0'
 
-  url "https://scratch.mit.edu/scratchr2/static/sa/Scratch-#{version}.dmg"
+  url "https://scratch.mit.edu/scratchr2/static/sa/Scratch-#{version.after_comma}.dmg"
+  appcast 'https://scratch.mit.edu/scratchr2/static/sa/version.xml'
   name 'Scratch'
-  homepage 'https://scratch.mit.edu/scratch2download/'
-  license :unknown    # todo: change license and remove this comment; ':unknown' is a machine-generated placeholder
+  homepage 'https://scratch.mit.edu/download'
 
-  installer :script => 'Install Scratch 2.app/Contents/MacOS/Install Scratch 2',
-            :args   => %w[-silent],
-            :sudo   => true
+  depends_on cask: 'adobe-air'
 
-  uninstall :script => {
-              :executable => '/Applications/Utilities/Adobe AIR Application Installer.app/Contents/MacOS/Adobe AIR Application Installer',
-              :args => %w[-uninstall -silent /Applications/Scratch\ 2.app]
-            }
+  installer script: {
+                      executable: "Install Scratch #{version.major}.app/Contents/MacOS/Install Scratch #{version.major}",
+                      args:       ['-silent'],
+                      sudo:       true,
+                    }
 
-  depends_on :cask => 'adobe-air'
+  uninstall script: {
+                      executable: '/Applications/Utilities/Adobe AIR Application Installer.app/Contents/MacOS/Adobe AIR Application Installer',
+                      args:       ['-uninstall', '-silent', "/Applications/Scratch #{version.major}.app"],
+                      sudo:       true,
+                    }
 end

@@ -1,14 +1,12 @@
-cask :v1 => 'automatic' do
-  version '2.4.7.392'
-  sha256 'b1d4b7b4a85eb81010b5863b439b978179f49c1c5d6522e481106bf93fbea94f'
+cask 'automatic' do
+  version '2.4.8.394'
+  sha256 'f7902f27df769bdbf80cc15d234030ea64fbc507e53076c8aa0a0a863a3eb0b1'
 
-  # amazonaws.com is the official download host per the vendor homepage
+  # com-codingcurious-downloads.s3.amazonaws.com was verified as official when first introduced to the cask
   url "https://com-codingcurious-downloads.s3.amazonaws.com/Automatic.#{version}.zip"
-  appcast 'http://update.codingcurious.com/automatic/appcast2.xml',
-          :sha256 => '8267eef79de744bb9f0075524c4cab6f3f83e0b0c6ced213131e632e37b34984'
+  appcast 'http://update.codingcurious.com/automatic/appcast2.xml'
   name 'Automatic'
-  homepage 'http://codingcurious.com/automatic/'
-  license :commercial
+  homepage 'https://codingcurious.com/otomatic/'
 
   prefpane 'Automatic.prefPane'
 end

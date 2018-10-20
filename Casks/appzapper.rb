@@ -1,12 +1,13 @@
-cask :v1 => 'appzapper' do
-  version '2.0.1'
-  sha256 'b7d0bdd05cf246a2f2ab18145b052824860cb74a6ae665fba9d403f6bb79fac4'
+cask 'appzapper' do
+  version '2.0.2'
+  sha256 'bc05e7b2290ffdbfba23fcb445d57237eef258fea679aff902aa135ee302d297'
 
-  url "http://www.appzapper.com/downloads/AppZapper#{version}.zip"
+  url "https://appzapper.com/downloads/appzapper#{version.no_dots}.zip"
+  appcast "https://www.appzapper.com/az#{version.major}appcast.xml"
   name 'AppZapper'
-  appcast 'http://www.appzapper.com/az2appcast.xml'
-  homepage 'http://www.appzapper.com/'
-  license :commercial
+  homepage 'https://www.appzapper.com/'
+
+  auto_updates true
 
   app 'AppZapper.app'
 end

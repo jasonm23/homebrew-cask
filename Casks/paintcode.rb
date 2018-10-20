@@ -1,13 +1,12 @@
-cask :v1 => 'paintcode' do
-  version :latest
-  sha256 :no_check
+cask 'paintcode' do
+  version '3.4.3'
+  sha256 '78bbfdb06879176befe8ab5c46310ba9663b0644db02dd7ce068b44bf88921cd'
 
-  # pixelcut.com is the official download host per the appcast feed
-  url 'http://www.pixelcut.com/paintcode/paintcode.zip'
-  appcast 'http://www.pixelcut.com/paintcode/appcast.xml'
+  # pixelcut.com/paintcode was verified as official when first introduced to the cask
+  url "https://www.pixelcut.com/paintcode#{version.major}/paintcode.zip"
+  appcast "https://www.pixelcut.com/paintcode#{version.major}/appcast.xml"
   name 'PaintCode'
-  homepage 'http://www.paintcodeapp.com/'
-  license :commercial
+  homepage 'https://www.paintcodeapp.com/'
 
   app 'PaintCode.app'
 end

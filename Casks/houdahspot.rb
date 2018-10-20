@@ -1,17 +1,11 @@
-cask :v1 => 'houdahspot' do
-  version '4.1'
-  sha256 'ecd30e68eb8a19e70887701b24b978c82b2498df46873bd2a08882b5484b8630'
+cask 'houdahspot' do
+  version '4.3.9'
+  sha256 '035c0f46910461368ed7f0520cbb61fc4068335740f2e89f2f5257d10459eaff'
 
-  url "http://www.houdah.com/houdahSpot/download_assets/HoudahSpot#{version}.zip"
-  appcast "http://www.houdah.com/houdahSpot/updates/cast#{version.to_i}.xml",
-          :sha256 => 'c726d86606a58e564c077246d0e6f7238a0ebf286c047aadcd9affa1162bda71'
+  url "https://www.houdah.com/houdahSpot/updates/cast#{version.major}_assets/HoudahSpot#{version}.zip"
+  appcast "https://www.houdah.com/houdahSpot/updates/cast#{version.major}.xml"
   name 'HoudahSpot'
-  homepage 'http://www.houdah.com/houdahSpot/'
-  license :commercial
+  homepage 'https://www.houdah.com/houdahSpot/'
 
   app 'HoudahSpot.app'
-
-  postflight do
-    suppress_move_to_applications
-  end
 end

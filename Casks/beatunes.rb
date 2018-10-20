@@ -1,14 +1,19 @@
-cask :v1 => 'beatunes' do
-  version '4.0.26'
-  sha256 '18ccbdf745c6b062fb41c4ebb08038e122aaef466946d55d38ec5a2152251515'
+cask 'beatunes' do
+  version '5.1.10'
+  sha256 '837e3fb9ed566f45ce5ee9aedf240d30d3144260459f1d89f66b425ba19e448b'
 
-  url "http://coxy.beatunes.com/download/beaTunes-#{version.gsub('.','-')}-osx.dmg"
+  url "http://coxy.beatunes.com/download/beaTunes-#{version.dots_to_hyphens}.dmg"
   name 'beaTunes'
-  homepage 'https://www.beatunes.com'
-  license :closed
+  homepage 'https://www.beatunes.com/'
 
-  depends_on :macos => '>= :lion'
-  depends_on :arch => :x86_64
+  depends_on macos: '>= :lion'
 
-  app "beaTunes#{version.to_i}.app"
+  app "beaTunes#{version.major}.app"
+
+  zap trash: [
+               '~/Library/Application Support/beaTunes',
+               '~/Library/Caches/beaTunes',
+               '~/Library/Logs/beaTunes',
+               '~/Library/Preferences/com.tagtraum.beatunes.plist',
+             ]
 end

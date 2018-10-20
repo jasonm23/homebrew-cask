@@ -1,16 +1,16 @@
-cask :v1 => 'dolphin' do
-  version '4.0-8092'
-  sha256 'b27db69a8bf727dbff6146ba9f7ffeca726e918fe4246b64aa8aa404a26c99a5'
+cask 'dolphin' do
+  version '5.0'
+  sha256 '1e7127cf9b110c5d7feabc0d05f620bad31d0f47a1d16e1f46e2e402d0ec233c'
 
-  url "https://dl.dolphin-emu.org/builds/dolphin-master-#{version}.dmg"
+  url "https://dl-mirror.dolphin-emu.org/#{version}/dolphin-#{version}.dmg"
+  appcast 'https://github.com/dolphin-emu/dolphin/releases.atom'
   name 'Dolphin'
   homepage 'https://dolphin-emu.org/'
-  license :gpl
 
   app 'Dolphin.app'
 
-  zap :delete => [
-                  '~/Library/Application Support/Dolphin',
-                  '~/Library/Preferences/org.dolphin-emu.dolphin.plist',
-                 ]
+  zap trash: [
+               '~/Library/Application Support/Dolphin',
+               '~/Library/Preferences/org.dolphin-emu.dolphin.plist',
+             ]
 end

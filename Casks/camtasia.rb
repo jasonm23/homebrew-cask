@@ -1,12 +1,14 @@
-cask :v1 => 'camtasia' do
-  version :latest
-  sha256 :no_check
+cask 'camtasia' do
+  version '2018.0.5,149'
+  sha256 '3461e36371a26ac2ae67f554748a3e6707ca07a7ac76fc1f9c0bb10d528ae593'
 
-  url 'http://download.techsmith.com/camtasiamac/enu/Camtasia.dmg'
-  appcast 'https://techsmithredirect.appspot.com/cmac?target=sparkleappcast&product=camtasiamac&lang=enu&ver=2.7.1&os=mac&code=none'
+  # rink.hockeyapp.net/api/2/apps/5d440dc130030d8a5db2ee6265d8df09 was verified as official when first introduced to the cask
+  url "https://rink.hockeyapp.net/api/2/apps/5d440dc130030d8a5db2ee6265d8df09/app_versions/#{version.after_comma}?format=zip"
+  appcast 'https://rink.hockeyapp.net/api/2/apps/5d440dc130030d8a5db2ee6265d8df09'
   name 'Camtasia'
   homepage 'https://www.techsmith.com/camtasia.html'
-  license :commercial
 
-  app 'Camtasia 2.app'
+  auto_updates true
+
+  app "Camtasia #{version.major}.app"
 end

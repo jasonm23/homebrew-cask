@@ -1,13 +1,11 @@
-cask :v1 => 'warsow' do
-  version '1.51'
-  sha256 '4d1a95f94769e0ec9dc70a000a3b461a0968cb5d8e45f5b6850607a99a058449'
+cask 'warsow' do
+  version '2.1.2'
+  sha256 '176b037186e4d8a1c0fc740fe8660cd960339fc4eeca5e5eaaec4028b9bd6aba'
 
-  url "http://update.warsow.net/mirror/warsow_#{version}.dmg.zip"
+  # sebastian.network/warsow was verified as official when first introduced to the cask
+  url "http://sebastian.network/warsow/warsow-#{version}.dmg"
   name 'Warsow'
-  homepage 'http://www.warsow.net/'
-  license :gpl
+  homepage 'https://www.warsow.net/'
 
-  container :nested => "Warsow #{version}.dmg"
-
-  app "Warsow #{version}.app"
+  app 'Warsow.app'
 end

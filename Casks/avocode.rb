@@ -1,11 +1,22 @@
-cask :v1 => 'avocode' do
-  version '2.2.1'
-  sha256 '66065ec9dd7c1696e689af92a0f6a6e0acf0f80f05b6b6f0847dc98105f7b785'
+cask 'avocode' do
+  version '3.5.2'
+  sha256 'ec23e34ad91e4e98d815088d7a0f17cfa2ec3a802535bfd22989f10b82ebac95'
 
-  url "http://mediacdn.avocode.com/download/avocode-app/#{version}/avocode-app-mac-#{version}.zip"
+  url "https://media.avocode.com/download/avocode-app/#{version}/Avocode-#{version}-mac.zip"
   name 'Avocode'
-  homepage 'http://avocode.com/'
-  license :commercial
+  homepage 'https://avocode.com/'
+
+  auto_updates true
 
   app 'Avocode.app'
+
+  zap trash: [
+               '~/.avocode',
+               '~/Library/Application Support/Avocode',
+               '~/Library/Caches/com.madebysource.avocode',
+               '~/Library/Caches/com.madebysource.avocode.ShipIt',
+               '~/Library/Preferences/com.madebysource.avocode.helper.plist',
+               '~/Library/Preferences/com.madebysource.avocode.plist',
+               '~/Library/Saved Application State/com.madebysource.avocode.savedState',
+             ]
 end

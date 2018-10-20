@@ -1,14 +1,12 @@
-cask :v1 => 'bit-slicer' do
-  version '1.7.6'
-  sha256 '03e9125481bd4c6459e379b3b0df69a2eecbde80f7cb11d9be8dfc9c0f8d3a58'
+cask 'bit-slicer' do
+  version '1.7.9'
+  sha256 '5dd8ab04ac8ba019bbed906eb6f8efe5d6d6adcb8952eae9fe23bef5138cd420'
 
-  # bitbucket.org is the official download host per the vendor homepage
-  url "https://bitbucket.org/zorgiepoo/bit-slicer/downloads/Bit%20Slicer%20#{version}.zip"
+  # zgcoder.net was verified as official when first introduced to the cask
+  url "https://zgcoder.net/software/bitslicer/dist/stable/Bit_Slicer_#{version}.zip"
+  appcast 'https://zgcoder.net/bitslicer/update/appcast.xml'
   name 'Bit Slicer'
-  appcast 'https://zgcoder.net/bitslicer/update/appcast.xml',
-          :sha256 => '3012f7d3d8b49f6d595d62e07f87525c0a225a59d44576ba46f0c67518fdf019'
   homepage 'https://github.com/zorgiepoo/bit-slicer/'
-  license :bsd
 
   app 'Bit Slicer.app'
 end

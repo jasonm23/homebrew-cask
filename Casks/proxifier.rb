@@ -1,23 +1,22 @@
-cask :v1 => 'proxifier' do
-  version :latest
-  sha256 :no_check
+cask 'proxifier' do
+  version '2.22'
+  sha256 'fe998ac7bbbfcf2bf6cc422e84099a11439711fa4a86618970dade62107c2d0d'
 
-  if MacOS.release <= :yosemite
-    url 'https://www.proxifier.com/distr/ProxifierMac.zip'
-  else
-    url 'https://www.proxifier.com/distr/ProxifierMacBeta.zip'
-  end
-
+  url 'https://www.proxifier.com/distr/ProxifierMac.dmg'
+  appcast 'https://www.proxifier.com/changelog/mac.html'
   name 'Proxifier'
   homepage 'https://www.proxifier.com/mac/'
-  license :commercial
+
+  auto_updates true
 
   app 'Proxifier.app'
 
-  if MacOS.release == :el_capitan
-    caveats <<-EOS.undent
-      #{token} stable version is incompatible with OS X 10.11 El Capitan.
-      Beta version has been installed instead.
-    EOS
-  end
+  zap trash: [
+               '~/Library/Application Support/Proxifier',
+               '~/Library/Caches/com.initex.proxifier.macosx',
+               '~/Library/Caches/com.apple.helpd/SDMHelpData/Other/English/HelpSDMIndexFile/Proxifier Help*',
+               '~/Library/Logs/Proxifier',
+               '~/Library/Preferences/com.initex.proxifier.macosx.plist',
+               '~/Library/Saved Application State/com.initex.proxifier.macosx.savedState',
+             ]
 end

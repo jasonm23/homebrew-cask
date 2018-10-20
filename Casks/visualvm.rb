@@ -1,11 +1,16 @@
-cask :v1 => 'visualvm' do
-  version '1.3.8'
-  sha256 'dae23a7625f543f14f86f846e590dae308df4c27dd64eda4ab8d85b9078e35bd'
+cask 'visualvm' do
+  version '1.4.2'
+  sha256 '6870ba8d2177f30ee1363bf97b267a25a7d82bf413b10cc3081ed188f4dcba9b'
 
-  url "https://java.net/downloads/visualvm/release138/VisualVM_#{version.delete('.')}.dmg"
+  # github.com/oracle/visualvm was verified as official when first introduced to the cask
+  url "https://github.com/oracle/visualvm/releases/download/#{version}/VisualVM_#{version.no_dots}.dmg"
+  appcast 'https://github.com/oracle/visualvm/releases.atom'
   name 'VisualVM'
-  homepage 'http://visualvm.java.net'
-  license :gpl
+  homepage 'https://visualvm.github.io/'
 
   app 'VisualVM.app'
+
+  caveats do
+    depends_on_java
+  end
 end

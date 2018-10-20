@@ -1,13 +1,11 @@
-cask :v1 => 'iboostup' do
-  version :latest
-  sha256 :no_check
+cask 'iboostup' do
+  version '6.3.20'
+  sha256 '1a23b99225390ed2892697904b97c726ad3584e656b27a4a29adbe87c1dfe7f0'
 
   url 'https://www.iboostup.com/iboostup.dmg'
+  appcast 'https://www.iboostup.com/updates'
   name 'iBoostUp'
-  appcast 'https://www.iboostup.com/updates',
-          :sha256 => 'b2ac6238575017acfdb5c589111795207780623065cb8e65e1ee569142986592'
   homepage 'https://www.iboostup.com/'
-  license :freemium
 
   app 'iBoostUp.app'
 end

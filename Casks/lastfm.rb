@@ -1,13 +1,20 @@
-cask :v1 => 'lastfm' do
-  version '2.1.36'
-  sha256 'd61d4947117080998937c0d63148caf693f1bed5ec768d86feeb3a86f84d1ff9'
+cask 'lastfm' do
+  version '2.1.37'
+  sha256 'dc46e58111f8555fc0b1d6d2bd11e8fd4e4c45c6c7e953d106e07be8d6d8b448'
 
-  url "http://cdn.last.fm/client/Mac/Last.fm-#{version}.zip"
-  appcast 'http://cdn.last.fm/client/Mac/updates.xml'
+  url "https://cdn.last.fm/client/Mac/Last.fm-#{version}.zip"
+  appcast 'https://cdn.last.fm/client/Mac/updates.xml'
   name 'Last.fm Scrobbler'
-  homepage 'http://www.last.fm/'
-  license :unknown    # todo: change license and remove this comment; ':unknown' is a machine-generated placeholder
-  tags :vendor => 'Last.fm'
+  homepage 'https://www.last.fm/'
 
   app 'Last.fm.app'
+
+  zap trash: [
+               '~/Library/Application Support/CrashReporter/Last.fm*',
+               '~/Library/Application Support/Last.fm',
+               '~/Library/Caches/fm.last.Scrobbler',
+               '~/Library/Caches/Last.fm',
+               '~/Library/Logs/Last.fm',
+               '~/Library/Preferences/fm.last*',
+             ]
 end

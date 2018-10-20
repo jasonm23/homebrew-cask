@@ -1,13 +1,22 @@
-cask :v1 => 'knock' do
-  version :latest
-  sha256 :no_check
+cask 'knock' do
+  version '2.2.1'
+  sha256 'c4eb533effd09dee4c1e89d9031afe4cb0260bc6088760bdaa6199511ffbad38'
 
-  url 'http://knocktounlock.com/download'
+  # knock-updates.s3.amazonaws.com was verified as official when first introduced to the cask
+  url 'https://knock-updates.s3.amazonaws.com/Knock.zip'
+  appcast 'https://knock-updates.s3.amazonaws.com/Knock.xml'
   name 'Knock'
-  appcast 'https://knock-updates.s3.amazonaws.com/Knock.xml',
-          :sha256 => 'c1976fb467cc420bf5e6d5137f01ca70baa3b758dcf8c23860c019bf6dd882c6'
-  homepage 'http://knocktounlock.com'
-  license :unknown    # todo: change license and remove this comment; ':unknown' is a machine-generated placeholder
+  homepage 'http://www.knocktounlock.com/'
 
   app 'Knock.app'
+
+  zap trash: [
+               '~/Library/Preferences/com.knock.mac.plist',
+               '~/Library/Logs/Knock',
+               '~/Library/Caches/com.knock.mac',
+               '~/Library/Caches/com.crashlytics.data/com.knock.mac',
+             ],
+      rmdir: [
+               '~/Library/Caches/com.crashlytics.data',
+             ]
 end

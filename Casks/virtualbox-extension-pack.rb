@@ -1,24 +1,40 @@
-cask :v1 => 'virtualbox-extension-pack' do
-  version '5.0.10-104061'
-  sha256 'c846fa26fec8587e57180c85c408cad377c48ad26830b0dc839ebf9025e3d29c'
+cask 'virtualbox-extension-pack' do
+  version '5.2.20,125813'
+  sha256 '815d3fafd22e01ad8e69edffa35bab1fce923143c75c0eb010f21ac1a2bd6279'
 
-  url "http://download.virtualbox.org/virtualbox/#{version.sub(%r{-.*},'')}/Oracle_VM_VirtualBox_Extension_Pack-#{version}.vbox-extpack"
-  name 'VirtualBox Extension Pack'
-  homepage 'https://www.virtualbox.org'
-  license :closed
-  tags :vendor => 'Oracle'
+  url "https://download.virtualbox.org/virtualbox/#{version.before_comma}/Oracle_VM_VirtualBox_Extension_Pack-#{version.before_comma}-#{version.after_comma}.vbox-extpack"
+  appcast 'https://download.virtualbox.org/virtualbox/LATEST.TXT'
+  name 'Oracle VirtualBox Extension Pack'
+  homepage 'https://www.virtualbox.org/'
+
+  conflicts_with cask: 'virtualbox-extension-pack-beta'
+  depends_on cask: 'virtualbox'
+  container type: :naked
 
   stage_only true
 
-  container :type => :naked
-
   postflight do
-    system 'sudo', 'VBoxManage', 'extpack', 'install', '--replace', "#{staged_path}/Oracle_VM_VirtualBox_Extension_Pack-#{version}.vbox-extpack"
+    system_command '/usr/local/bin/VBoxManage',
+                   args:  [
+                            'extpack', 'install',
+                            '--replace', "#{staged_path}/Oracle_VM_VirtualBox_Extension_Pack-#{version.before_comma}-#{version.after_comma}.vbox-extpack"
+                          ],
+                   input: 'y',
+                   sudo:  true
   end
 
   uninstall_postflight do
-    system 'sudo', 'VBoxManage', 'extpack', 'uninstall', 'Oracle VM VirtualBox Extension Pack'
+    next unless File.exist?('/usr/local/bin/VBoxManage')
+
+    system_command '/usr/local/bin/VBoxManage',
+                   args: [
+                           'extpack', 'uninstall',
+                           'Oracle VM VirtualBox Extension Pack'
+                         ],
+                   sudo: true
   end
 
-  depends_on :cask => 'virtualbox'
+  caveats do
+    license 'https://www.virtualbox.org/wiki/VirtualBox_PUEL'
+  end
 end

@@ -1,13 +1,12 @@
-cask :v1 => 'stattransfer' do
-  version '13'
-  sha256 '2a5af41ee57a0300b11e2b1e62e613fcb582cb262b731b3f8facbed4b76a4b53'
+cask 'stattransfer' do
+  version '14'
+  sha256 'b4d40db39f2ddae23622336771b0dfb27e874ba885320d2fe75482783342bfe6'
 
   url 'https://www.stattransfer.com/downloads/stdemo.dmg'
   name 'Stat/Transfer'
   homepage 'https://stattransfer.com/'
-  license :commercial
 
-  pkg "st_installer_v#{version}.pkg"
+  pkg "st_installer#{version}.pkg"
 
-  uninstall :pkgutil => 'com.circlesys.pkg'
+  uninstall pkgutil: "com.circlesys.v#{version}.pkg"
 end

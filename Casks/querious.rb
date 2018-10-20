@@ -1,12 +1,11 @@
-cask :v1 => 'querious' do
-  version :latest
-  sha256 :no_check
+cask 'querious' do
+  version '2.1.11'
+  sha256 'f13cf1c3b32b968162db95aa7b23e7af75c4acf1ce8ad9333f943f0af0b7b9a5'
 
-  url 'http://www.araelium.com/querious/downloads/Querious.dmg'
-  appcast 'https://store.araelium.com/updates/querious'
-  name 'Querious'
-  homepage 'http://www.araelium.com/querious/'
-  license :commercial
+  url "https://www.araelium.com/querious/downloads/versions/Querious#{version}.zip"
+  appcast 'https://arweb-assets.s3.amazonaws.com/downloads/querious/prerelease-updates.xml'
+  name "Querious #{version.major}"
+  homepage 'https://www.araelium.com/querious/'
 
   app 'Querious.app'
 end

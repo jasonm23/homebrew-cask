@@ -1,11 +1,11 @@
-cask :v1 => 'kugoumusic' do
-  version :latest
-  sha256 :no_check
+cask 'kugoumusic' do
+  version '2.7.0'
+  sha256 'bd0081ddacdf60a7774f599f7aad2abded65e1e5615872439efc28dd8e7a6f3b'
 
-  url 'http://macservice.kugou.com/download/KugouMusicForMac.dmg'
+  url "http://downmini.kugou.com/mac/Kugou_V#{version}.dmg"
+  appcast 'http://download.kugou.com/mac.html'
   name 'Kugou Music'
-  homepage 'http://www.kugou.com'
-  license :unknown    # todo: change license and remove this comment; ':unknown' is a machine-generated placeholder
+  homepage 'https://www.kugou.com/'
 
   app 'KugouMusic.app'
 end

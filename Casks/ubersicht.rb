@@ -1,13 +1,24 @@
-cask :v1 => 'ubersicht' do
-  version '0.6.20'
-  sha256 '50a56f68533f0a7ed5e82bd7cd877c3361c60cc9217689195c24bdc2e77b3f95'
+cask 'ubersicht' do
+  version '1.2.53'
+  sha256 'e74dfc4d49e035269e44563541eb0b50b5de7c102fe948a09d5b075140ddf29e'
 
   url "http://tracesof.net/uebersicht/releases/Uebersicht-#{version}.app.zip"
+  appcast 'http://tracesof.net/uebersicht/updates.xml.rss'
   name 'Übersicht'
-  appcast 'http://tracesof.net/uebersicht/updates.xml.rss',
-          :sha256 => 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
-  homepage 'http://tracesof.net/uebersicht'
-  license :gpl
+  homepage 'http://tracesof.net/uebersicht/'
 
-  app 'Übersicht.app'
+  auto_updates true
+  depends_on macos: '>= :yosemite'
+
+  app 'Übersicht.app'
+
+  uninstall login_item: 'Übersicht'
+
+  zap trash: [
+               '~/Library/Application Support/Übersicht',
+               '~/Library/Application Support/tracesOf.Uebersicht',
+               '~/Library/Caches/tracesOf.Uebersicht',
+               '~/Library/Preferences/tracesOf.Uebersicht.plist',
+               '~/Library/WebKit/tracesOf.Uebersicht',
+             ]
 end

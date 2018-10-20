@@ -1,12 +1,17 @@
-cask :v1 => 'exist-db' do
-  version '2.2RC2'
-  sha256 '35aa7e36f21043629a7d562968cc803e6dae84429be4a0d1c77ed62bdf6f9f2f'
+cask 'exist-db' do
+  version '4.4.0'
+  sha256 '738d41586968c4dd348267f4d789b02897a5a968f446b6ef21a274acd20d705a'
 
-  # sourceforge.net is the official download host per the vendor homepage
-  url "http://downloads.sourceforge.net/sourceforge/exist/eXist-db-#{version}.dmg"
+  # bintray.com/artifact/download/existdb was verified as official when first introduced to the cask
+  url "https://bintray.com/artifact/download/existdb/releases/eXist-db-#{version}.dmg"
   name 'eXist-db'
-  homepage 'http://exist-db.org/'
-  license :gpl
+  homepage 'https://exist-db.org/exist/apps/homepage/index.html'
 
   app 'eXist-db.app'
+
+  zap trash: '~/Library/Application Support/org.exist'
+
+  caveats do
+    depends_on_java '8+'
+  end
 end

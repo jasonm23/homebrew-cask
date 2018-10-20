@@ -1,12 +1,14 @@
-cask :v1 => 'harvest' do
-  version '1.4.4'
-  sha256 '27d5f2a5dc9f954c6fb073a77ea6d17a16c69082a0b9a046682e26ab29fca9d9'
+cask 'harvest' do
+  version '2.1.10'
+  sha256 '4cfd6f30dc20e0b4467d87d736bb6896f703644e446c549e0a34ef35463e5652'
 
   url "https://www.getharvest.com/harvest/mac/Harvest.#{version}.zip"
   appcast 'https://www.getharvest.com/harvest/mac/appcast.xml'
   name 'Harvest'
-  homepage 'https://www.getharvest.com/mac'
-  license :gratis
+  homepage 'https://www.getharvest.com/mac-time-tracking'
+
+  auto_updates true
+  depends_on macos: '>= :sierra'
 
   app 'Harvest.app'
 end

@@ -1,13 +1,21 @@
-cask :v1 => 'dropshare' do
-  version :latest
-  sha256 :no_check
+cask 'dropshare' do
+  version '5,5036'
+  sha256 'c28dd83d2da7107d85953dec8e03a5ddaff837ba34fdc547427144e26358e665'
 
-  url 'https://getdropsha.re/sparkle/Dropshare-latest.zip'
+  # d2wvuuix8c9e48.cloudfront.net was verified as official when first introduced to the cask
+  url "https://d2wvuuix8c9e48.cloudfront.net/Dropshare#{version.major}-#{version.after_comma}.app.zip"
+  appcast "https://getdropsha.re/sparkle/Dropshare#{version.major}.xml"
   name 'Dropshare'
-  appcast 'https://getdropsha.re/sparkle/Dropshare.xml',
-          :sha256 => 'bb9b88f179432633594ea0d417ce7b55e8a42fe24a2106e55f1fe711473ec86a'
   homepage 'https://getdropsha.re/'
-  license :commercial
 
-  app 'Dropshare.app'
+  app "Dropshare #{version.major}.app"
+  binary "#{appdir}/Dropshare #{version.major}.app/Contents/Resources/ds.sh", target: 'ds'
+
+  zap trash: [
+               '~/Library/Application Support/Dropshare 4',
+               '~/Library/Caches/net.mkswap.Dropshare4',
+               '~/Library/Cookies/net.mkswap.Dropshare4.binarycookies',
+               '~/Library/Logs/Dropshare 4',
+               '~/Library/Preferences/net.mkswap.Dropshare4.plist',
+             ]
 end

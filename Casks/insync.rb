@@ -1,11 +1,13 @@
-cask :v1 => 'insync' do
-  version '1.2.16.35181'
-  sha256 'a80f07bd191228ba283a5b975326cf4d62dce28c600753ecadf66f00d361a22f'
+cask 'insync' do
+  version '1.5.1.37343'
+  sha256 '7bfa4cfc326d5fdb55a861aab4484023512c0e098123f879c79ef1583ae45f63'
 
   url "http://s.insynchq.com/builds/Insync-#{version}.dmg"
   name 'Insync'
   homepage 'https://www.insynchq.com/'
-  license :closed
+
+  auto_updates true
+  conflicts_with cask: 'insync-beta'
 
   app 'Insync.app'
 end

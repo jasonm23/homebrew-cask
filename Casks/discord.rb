@@ -1,11 +1,23 @@
-cask :v1 => 'discord' do
-  version '0.0.231'
-  sha256 '78da63758a567c3c12ff5e138b4613096119f66adb5fce6fb530bb50891c1374'
+cask 'discord' do
+  version '0.0.251'
+  sha256 '98fe2d3d29b8e6ea676f8ce633122c3cc8d2541bff8fb20ffa40f014224e4a3a'
 
   url "https://cdn.discordapp.com/apps/osx/#{version}/Discord.dmg"
+  appcast 'https://discordapp.com/api/stable/updates?platform=osx'
   name 'Discord'
-  homepage 'https://discordapp.com'
-  license :gratis
+  homepage 'https://discordapp.com/'
+
+  auto_updates true
 
   app 'Discord.app'
+
+  zap trash: [
+               '~/Library/Application Support/discord',
+               '~/Library/Caches/com.hnc.Discord',
+               '~/Library/Caches/com.hnc.Discord.ShipIt',
+               '~/Library/Cookies/com.hnc.Discord.binarycookies',
+               '~/Library/Preferences/com.hnc.Discord.helper.plist',
+               '~/Library/Preferences/com.hnc.Discord.plist',
+               '~/Library/Saved Application State/com.hnc.Discord.savedState',
+             ]
 end

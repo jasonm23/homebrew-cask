@@ -1,11 +1,12 @@
-cask :v1 => 'meteorologist' do
-  version '1.6.1'
-  sha256 '15243a845062d87bf67e6a26b8da011e00c50a5f24def460cc685532d7d720a4'
+cask 'meteorologist' do
+  version '3.1.4'
+  sha256 'ade644cbe2faad927c1bbede7479d873fe48471f94610da50dcdd8160ca0f812'
 
-  url "http://downloads.sourceforge.net/heat-meteo/Meteorologist-#{version}.dmg"
+  # downloads.sourceforge.net/heat-meteo was verified as official when first introduced to the cask
+  url "https://downloads.sourceforge.net/heat-meteo/Meteorologist-#{version}.dmg"
+  appcast 'https://sourceforge.net/projects/heat-meteo/rss'
   name 'Meteorologist'
-  homepage 'http://heat-meteo.sourceforge.net/'
-  license :oss
+  homepage 'https://heat-meteo.sourceforge.io/'
 
   app 'Meteorologist.app'
 end

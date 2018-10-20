@@ -1,16 +1,12 @@
-cask :v1 => 'eagle' do
-  version '7.4.0'
-  sha256 '11aa7b6fc7bf9fce2e88f0cfca15b821404e42b03e9a8529c9c0b5c2781e9133'
+cask 'eagle' do
+  version '9.2.1'
+  sha256 'd7a8b5a328f968dae48ed99754d8829809385f55f01cd05c2cd83addb9de8d69'
 
-  # cadsoft.de is the official download host per the vendor homepage
-  url "http://web.cadsoft.de/ftp/eagle/program/#{version.sub(%r{\.\d+$},'')}/eagle-mac64-#{version}.zip"
-  name 'EAGLE'
-  homepage 'http://www.cadsoftusa.com/'
-  license :freemium
-  tags :vendor => 'CadSoft'
+  url "https://eagle-updates.circuits.io/downloads/#{version.dots_to_underscores}/Autodesk_EAGLE_#{version}_English_Mac_64bit.pkg"
+  name 'Autodesk EAGLE'
+  homepage 'https://circuits.io/'
 
-  pkg "eagle-mac64-#{version}.pkg"
+  pkg "Autodesk_EAGLE_#{version}_English_Mac_64bit.pkg"
 
-  uninstall :pkgutil => 'com.CadSoftComputerGmbH.EAGLE',
-            :delete => "/Applications/EAGLE-#{version}"
+  uninstall pkgutil: 'com.Autodesk.eagle'
 end

@@ -1,11 +1,12 @@
-cask :v1 => 'camed' do
-  version '3.2'
-  sha256 '7956c929a3518102a5364982e1ba978930228169d4d1eedb68c2db62fc4a86f1'
+cask 'camed' do
+  version '3.2.2'
+  sha256 '407e101a3a47566395606b03114388f94f48b488d3fa27041aecb937eb43bd12'
 
-  url "http://downloads.sourceforge.net/sourceforge/camprocessor/CAMEd-#{version}-macosx-cocoa-x86_64.tar.gz"
+  # downloads.sourceforge.net/camprocessor was verified as official when first introduced to the cask
+  url "https://downloads.sourceforge.net/camprocessor/CAMEd-#{version}-macosx-cocoa-x86_64.tar.gz"
+  appcast 'https://sourceforge.net/projects/camprocessor/rss'
   name 'CAM Editor'
-  homepage 'http://camprocessor.sourceforge.net/'
-  license :oss
+  homepage 'https://camprocessor.sourceforge.io/'
 
   app "CAMEd-#{version}/CAMed.app"
 end

@@ -1,13 +1,16 @@
-cask :v1 => 'unity' do
-  version '5.2.2f1'
-  sha256 '1a810817712f4adea34894b3473b52a6bf2a0c79045edc8eb4ee8df3dd2f07fe'
+cask 'unity' do
+  version '2018.2.13f1,83fbdcd35118'
+  sha256 '397e65bd7666a3739db7780a36f34bb6ae79136719a8050bff95bf9e789bd5f6'
 
-  url 'http://netstorage.unity3d.com/unity/3757309da7e7/UnityDownloadAssistant-5.2.2f1.dmg'
-  name 'Unity'
+  url "https://netstorage.unity3d.com/unity/#{version.after_comma}/MacEditorInstaller/Unity.pkg"
+  appcast 'https://unity3d.com/get-unity/download/archive'
+  name 'Unity Editor'
   homepage 'https://unity3d.com/unity/'
-  license :commercial
 
-  installer :manual => 'Unity Download Assistant.app'
+  pkg 'Unity.pkg'
 
-  uninstall :pkgutil => 'com.unity3d.*'
+  uninstall quit:    'com.unity3d.UnityEditor5.x',
+            pkgutil: 'com.unity3d.UnityEditor5.x',
+            delete:  '/Applications/Unity/Unity.app',
+            rmdir:   '/Applications/Unity'
 end

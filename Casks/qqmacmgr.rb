@@ -1,11 +1,10 @@
-cask :v1 => 'qqmacmgr' do
-  version '2.4.0'
-  sha256 'd8dd104bdf30e4e9fde8add44b546b667a717e21c2666886a317f9d2f08fb2f7'
+cask 'qqmacmgr' do
+  version '2.4.8'
+  sha256 '7e4ade5801f1526c665cf2d228ebfab911f2141863c1f9a4df5fad742aa96351'
 
-  url 'http://dlied6.qq.com/invc/xfspeed/mac/verupdate/QQMacMgr_24_0_0.dmg'
+  url "https://dlied6.qq.com/invc/xfspeed/mac/verupdate/QQMacMgr_#{version}.dmg"
   name '腾讯电脑管家'
-  homepage 'http://mac.gj.qq.com/'
-  license :gratis
+  homepage 'https://mac.gj.qq.com/'
 
   app 'QQMacMgr.app'
 end

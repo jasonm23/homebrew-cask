@@ -1,29 +1,31 @@
-cask :v1 => 'sage' do
-  if MacOS.release <= :lion
-    version '6.6'
-    sha256 'bdd740d8c92df5467269787aaf00e8cd0b2430cead259a4f15ef04e92b274282'
-    # mit.edu is an official download host per the vendor download page
-    url "http://mirrors.mit.edu/sage/osx/intel/sage-#{version}-x86_64-Darwin-OSX_10.7_x86_64-app.dmg"
+cask 'sage' do
+  if MacOS.version == :el_capitan
+    version '8.3,10.11.6'
+    sha256 '71bc5b85ffa251a6db38f27feec7eb725a2745ab769b752b55dca34ec8c75417'
+  elsif MacOS.version == :sierra
+    version '8.1,10.12.6'
+    sha256 'bd795369398873ccd26bae7e4ccc67370799d3038bebab911a626f496eba6d33'
   else
-    version '6.9'
-    sha256 '03112bf747cf807f308d518f34c1982ca3c9599e65bf64a6782efc78136198a4'
-    # mit.edu is an official download host per the vendor download page
-    url "http://mirrors.mit.edu/sage/osx/intel/sage-#{version}-x86_64-Darwin-OSX_10.10_x86_64-app.dmg"
+    version '8.3,10.13.6'
+    sha256 'e2168405cac8a61562933b7523a7b124a4ca4aed1fbd531db2a99851b013f157'
   end
 
+  # mirrors.mit.edu/sage/osx/intel was verified as official when first introduced to the cask
+  url "http://mirrors.mit.edu/sage/osx/intel/sage-#{version.before_comma}-OSX_#{version.after_comma}-x86_64.app.dmg"
   name 'Sage'
-  homepage 'http://www.sagemath.org/'
-  license :gpl
+  homepage 'https://www.sagemath.org/'
 
-  app "Sage-#{version}.app"
-  binary "Sage-#{version}.app/Contents/Resources/sage/sage"
+  depends_on macos: '>= :el_capitan'
 
-  zap :delete => [
-                  '~/.sage',
-                  '~/Library/Logs/sage.log',
-                 ]
+  app "SageMath-#{version.before_comma}.app"
+  binary "#{appdir}/SageMath-#{version.before_comma}.app/Contents/Resources/sage/sage"
 
-  caveats do
-    files_in_usr_local
-  end
+  uninstall quit: 'org.sagemath.Sage'
+
+  zap trash: [
+               '~/.sage',
+               '~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/org.sagemath.sage.sfl*',
+               '~/Library/Logs/sage.log',
+               '~/Library/Preferences/org.sagemath.Sage.plist',
+             ]
 end

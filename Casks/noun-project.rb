@@ -1,16 +1,14 @@
-cask :v1 => 'noun-project' do
-  version '1.1'
-  sha256 '7129db91ce7801d131241bf5fa8e918d4a2820fbbf709cb567054d9aca5f231e'
+cask 'noun-project' do
+  version '2.2.4'
+  sha256 '03ce8569cf7148e9f882d40e2e10ff8f4f48f570e7fe3c8dc0706d41e4fb5dbb'
 
-  # amazonaws.com is the official download host per the vendor homepage
+  # amazonaws.com/nounproject was verified as official when first introduced to the cask
   url "https://s3.amazonaws.com/nounproject/mac/Noun-Project-#{version}.dmg"
+  appcast 'https://thenounproject.com/for-mac/feed/'
   name 'Noun Project'
-  appcast 'https://thenounproject.com/for-mac/feed/',
-          :sha256 => '6e6d98cbd80300c45eafafe88c4320e9838d07023beb2b0d6cc9f1c3bc08e045'
-  homepage 'https://thenounproject.com'
-  license :commercial
+  homepage 'https://thenounproject.com/'
+
+  depends_on macos: '>= :mavericks'
 
   app 'Noun Project.app'
-
-  depends_on :macos => '>= 10.9'
 end

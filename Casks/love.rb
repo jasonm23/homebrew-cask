@@ -1,13 +1,12 @@
-cask :v1 => 'love' do
-  version '0.9.2'
-  sha256 'a1c76e0bdafbfc596c0001dae9009a683a7e4a0a042c25cb29d95c11e051c4e4'
+cask 'love' do
+  version '11.1'
+  sha256 '05b22ea15b830623b659d818cc97831479919e9d067f42b8103374128756738e'
 
-  # bitbucket.org is the official download host per the vendor homepage
-  url "https://bitbucket.org/rude/love/downloads/love-#{version}-macosx-x64.zip"
+  # bitbucket.org/rude/love was verified as official when first introduced to the cask
+  url "https://bitbucket.org/rude/love/downloads/love-#{version}-macos.zip"
   name 'LÖVE'
-  homepage 'http://love2d.org'
-  license :oss
+  homepage 'https://love2d.org/'
 
   app 'love.app'
-  binary 'love.app/Contents/MacOS/love'
+  binary "#{appdir}/love.app/Contents/MacOS/love"
 end

@@ -1,13 +1,25 @@
-cask :v1 => 'typora' do
-  version :latest
-  sha256 :no_check
+cask 'typora' do
+  version '0.9.9.18.1'
+  sha256 'aaba987886b6d1b1e0b83c36a6313222ea6f04051b5d21a3a3bcd1f87302b944'
 
-  url 'http://typora.io/download/typora_latest.zip'
+  url "https://www.typora.io/download/Typora-#{version}.dmg"
+  appcast 'https://www.typora.io/download/dev_update.xml'
   name 'Typora'
-  appcast 'http://typora.io/download/dev_update.xml',
-          :sha256 => 'af9b77a097850693934f4c560c2bf673a4259d477a399f1c3baeaeb259cfbaf7'
-  homepage 'http://typora.io'
-  license :gratis
+  homepage 'https://typora.io/'
+
+  auto_updates true
+  depends_on macos: '>= :mavericks'
 
   app 'Typora.app'
+
+  zap trash: [
+               '~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/abnerworks.typora.sfl*',
+               '~/Library/Application Support/Typora',
+               '~/Library/Application Support/abnerworks.Typora',
+               '~/Library/Caches/abnerworks.Typora',
+               '~/Library/Cookies/abnerworks.Typora.binarycookies',
+               '~/Library/Preferences/abnerworks.Typora.plist',
+               '~/Library/Saved Application State/abnerworks.Typora.savedState',
+               '~/Library/WebKit/abnerworks.Typora',
+             ]
 end

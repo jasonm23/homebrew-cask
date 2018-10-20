@@ -1,12 +1,11 @@
-cask :v1 => 'navicat-premium' do
-  version '11.1.16'
-  sha256 '940a7c343e9b0fd97141411e871c540b8ddf48cf2afbfd7c531cbfccc17c5a72'
+cask 'navicat-premium' do
+  version '12.1.10'
+  sha256 'b74e4c3c4a66653c344903dbf32bfd0cfd8a4e3a9dec0432de9ac13d669bc283'
 
-  url "http://download.navicat.com/download/navicat#{version.sub(%r{^(\d+)\.(\d+).*},'\1\2')}_premium_en.dmg"
+  url "http://download.navicat.com/download/navicat#{version.major_minor.no_dots}_premium_en.dmg"
+  appcast 'https://www.navicat.com/en/products/navicat-premium-release-note'
   name 'Navicat Premium'
-  homepage 'http://www.navicat.com/products/navicat-premium'
-  license :commercial
-  tags :vendor => 'Navicat'
+  homepage 'https://www.navicat.com/products/navicat-premium'
 
   app 'Navicat Premium.app'
 end

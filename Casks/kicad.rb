@@ -1,12 +1,21 @@
-cask :v1 => 'kicad' do
-  version '2014-02-26'
-  sha256 '066520f10e9646e88c2e1d7812adf54a73a331592076f394cb439a97c228410b'
+cask 'kicad' do
+  version '5.0.1'
+  sha256 '3066e7c8da09afea2e27b4dc5d0742c83c5a2e93408d9d76e342e14e594bc7b3'
 
-  # mdx4.org is the official download host per the vendor homepage
-  url "http://www.mdx4.org/uploads/kicad/Kicad-product-#{version}.zip"
+  url "http://downloads.kicad-pcb.org/osx/stable/kicad-unified-#{version}.dmg"
+  appcast 'http://downloads.kicad-pcb.org/osx/stable/'
   name 'KiCad'
-  homepage 'http://www.kicad-pcb.org/'
-  license :gpl
+  homepage 'http://kicad-pcb.org/'
 
-  suite 'Kicad'
+  suite 'Kicad-apps', target: 'Kicad'
+  artifact 'kicad', target: '/Library/Application Support/kicad'
+
+  preflight do
+    FileUtils.cd staged_path do
+      FileUtils.mkdir 'Kicad-apps'
+      FileUtils.mv Dir.glob('Kicad/*.app'), 'Kicad-apps'
+    end
+  end
+
+  zap trash: '~/Library/Preferences/kicad'
 end

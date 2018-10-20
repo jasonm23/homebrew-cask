@@ -1,11 +1,12 @@
-cask :v1 => 'retroshare' do
-  version '0.5.5b'
-  sha256 '24beb2e1087e7a93ba996030c0785cd9f3a575d3adc5dcfda0d58aab3b40aebe'
+cask 'retroshare' do
+  version '0.6.4,20180303.9d6e642'
+  sha256 'b91b93afd2e002c3001598e57ab62a9f2e0ada047ca041d891a447da1d20d388'
 
-  url "http://downloads.sourceforge.net/project/retroshare/RetroShare/#{version}/Retroshare-V#{version}-svn6877_OSX10.6u.dmg"
+  # github.com/RetroShare/RetroShare was verified as official when first introduced to the cask
+  url "https://github.com/RetroShare/RetroShare/releases/download/v#{version.before_comma}/retroshare-#{version.before_comma}_#{version.after_comma}-Mac-OSX.dmg"
+  appcast 'https://github.com/RetroShare/RetroShare/releases.atom'
   name 'RetroShare'
-  homepage 'http://retroshare.sourceforge.net/'
-  license :gpl
+  homepage 'https://retroshare.sourceforge.io/'
 
-  app 'Retroshare.app'
+  app 'retroshare.app'
 end

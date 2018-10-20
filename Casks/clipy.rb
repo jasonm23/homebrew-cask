@@ -1,16 +1,27 @@
-cask :v1 => 'clipy' do
-  version '1.0.5'
-  sha256 '774446dd5da9d47960ec8be2d44e26318913792603a17d76853774d1c12fdd25'
+cask 'clipy' do
+  version '1.2.1'
+  sha256 'dfbb66ce3135fbaa2d64eaeea99a63e63485e322c9746045a1098b1696a1ecd5'
 
+  # github.com/Clipy/Clipy was verified as official when first introduced to the cask
   url "https://github.com/Clipy/Clipy/releases/download/#{version}/Clipy_#{version}.dmg"
-  appcast 'https://clipy-app.com/appcast.xml',
-          :sha256 => '230588ccc0ea43d7fb3c0ef9a59336025944f2d4e7d87285ba60a876031d93a9',
-          :format => :sparkle
+  appcast 'https://github.com/Clipy/Clipy/releases.atom'
   name 'Clipy'
   homepage 'https://clipy-app.com/'
-  license :mit
 
-  depends_on :macos => '>= :mavericks'
+  depends_on macos: '>= :yosemite'
 
   app 'Clipy.app'
+
+  uninstall login_item: 'Clipy',
+            quit:       'com.clipy-app.Clipy'
+
+  zap trash: [
+               '~/Library/Application Support/Clipy',
+               '~/Library/Application Support/com.clipy-app.Clipy',
+               '~/Library/Caches/com.clipy-app.Clipy',
+               '~/Library/Caches/com.crashlytics.data/com.clipy-app.Clipy',
+               '~/Library/Caches/io.fabric.sdk.mac.data/com.clipy-app.Clipy',
+               '~/Library/Cookies/com.clipy-app.Clipy.binarycookies',
+               '~/Library/Preferences/com.clipy-app.Clipy.plist',
+             ]
 end

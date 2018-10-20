@@ -1,11 +1,11 @@
-cask :v1 => 'zerobranestudio' do
-  version '1.20'
-  sha256 '1ad9bc8b4c636f4a2c8bf6adb55ba0b4327c134ced0058744496ac6accc8265e'
+cask 'zerobranestudio' do
+  version '1.80'
+  sha256 '05ceebcd3d073a3e6242bcbf2ff0f1f1c503cf058d4736ff5ccba0fea8563e46'
 
   url "https://download.zerobrane.com/ZeroBraneStudioEduPack-#{version}-macos.dmg"
+  appcast 'https://raw.githubusercontent.com/pkulchenko/ZeroBraneStudio/master/CHANGELOG.md'
   name 'ZeroBrane Studio'
-  homepage 'https://studio.zerobrane.com'
-  license :mit
+  homepage 'https://studio.zerobrane.com/'
 
   app 'ZeroBraneStudio.app'
 end

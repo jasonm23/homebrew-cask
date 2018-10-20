@@ -1,13 +1,18 @@
-cask :v1 => 'vimediamanager' do
-  version '0.7a13c'
-  sha256 'da5a1f76d556bbdb4cff76295cd0e60a47d05f6073b35dae20a88387f4eb10ce'
+cask 'vimediamanager' do
+  version '0.7.18'
+  sha256 '4ba3510f5996840664b9bc0793a92367ff61ec0f4bb69cd985df5e26fb1da7b3'
 
-  url "http://mariusth.channelwood.org/vimediamanager/files/vimediamanager_v#{version}.dmg"
+  url "https://github.com/vidalvanbergen/ViMediaManager/releases/download/v#{version.major_minor}a#{version.patch}/ViMediaManager_v#{version}c.dmg"
+  appcast 'https://github.com/vidalvanbergen/ViMediaManager/releases.atom'
   name 'ViMediaManager'
-  appcast 'http://mariusth.heliohost.org/vimediamanager/appcast-cocoa.xml',
-          :sha256 => '595974a863e2502ca4cc038cf6f234d4e2606c93dd862bdfeacb50338fb6bf34'
-  homepage 'http://mariusth.heliohost.org/vimediamanager/'
-  license :gratis
+  homepage 'https://github.com/vidalvanbergen/ViMediaManager'
 
   app 'ViMediaManager.app'
+
+  zap trash: [
+               '~/Library/Application Support/ViMediaManager',
+               '~/Library/Caches/com.vidalvanbergen.vimediamanager-alpha',
+               '~/Library/Preferences/com.vidalvanbergen.vimediamanager-alpha.plist',
+               '~/Library/Saved Application State/com.vidalvanbergen.vimediamanager-alpha.savedState',
+             ]
 end

@@ -1,11 +1,10 @@
-cask :v1 => 'yimello' do
-  version :latest
-  sha256 :no_check
+cask 'yimello' do
+  version '0.3.3'
+  sha256 'e1022910be4363e989b6b0df8430a370589c4839884400be6af50492ba8fbbf4'
 
-  url 'http://yimello.adriencadet.com/assets/zip/yimello-mac.zip'
+  url "https://yimello.adriencadet.com/assets/zip/yimello-mac-#{version}.zip"
   name 'Yimello'
-  homepage 'http://yimello.adriencadet.com/'
-  license :unknown    # todo: change license and remove this comment; ':unknown' is a machine-generated placeholder
+  homepage 'https://yimello.adriencadet.com/'
 
   app 'Yimello.app'
 end

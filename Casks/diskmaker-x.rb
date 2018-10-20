@@ -1,11 +1,11 @@
-cask :v1 => 'diskmaker-x' do
-  version '5.0.1'
-  sha256 '69f2d57392f56fbc1fa9cccc0d1d2be57b8ff4d39bcfeb1cb6770fbf702fb3df'
+cask 'diskmaker-x' do
+  version '8'
+  sha256 '32b4600ae6a51ecfa819125dc85d179d632fba5e04b11d41235f6fe20e834ccf'
 
-  url "http://diskmakerx.com/downloads/DiskMaker_X_#{version.to_i}.dmg"
+  url "https://diskmakerx.com/downloads/DiskMaker_X_#{version.no_dots}.dmg"
+  appcast 'https://diskmakerx.com/feed/'
   name 'DiskMaker X'
-  homepage 'http://diskmakerx.com/'
-  license :gratis
+  homepage 'https://diskmakerx.com/'
 
-  app "DiskMaker X #{version.to_i}.app"
+  app "DiskMaker X #{version.major} for macOS Mojave.app"
 end

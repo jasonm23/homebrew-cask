@@ -1,11 +1,11 @@
-cask :v1 => 'imitone' do
-  version '0.8.0'
-  sha256 '965f52c4cb43d0331033b8be3b9578ef46a54e4a3b8eb93feb322bbfc2714eaa'
+cask 'imitone' do
+  version '0.9.2c'
+  sha256 '8bbe20c0ddbfb3a583b10e88eb8515174577bdfdc5f345d505fe6ddb2d2d8642'
 
-  url "http://imitone.com/beta/imitone-#{version}.dmg"
+  url "https://imitone.com/beta/imitone-#{version}.dmg"
+  appcast 'https://imitone.com/beta/'
   name 'imitone'
-  homepage 'http://imitone.com/'
-  license :commercial
+  homepage 'https://imitone.com/'
 
   app 'imitone.app'
 end

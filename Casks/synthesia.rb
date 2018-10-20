@@ -1,13 +1,17 @@
-cask :v1 => 'synthesia' do
-  version '10.1'
-  sha256 '394418e9a32cd2dc53858f8721c81832be3ca460c0cf210bd8e179f1d6b2ba1d'
+cask 'synthesia' do
+  version '10.4'
+  sha256 'a17b3a39c7351ad93cc3c099f7cc57520532a35a23fdd8fb73d1d7a86a8e6649'
 
-  # amazonaws.com is the official download host per the vendor homepage
+  # synthesia.s3.amazonaws.com was verified as official when first introduced to the cask
   url "https://synthesia.s3.amazonaws.com/files/Synthesia-#{version}.dmg"
   name 'Synthesia'
-  homepage 'http://www.synthesiagame.com'
-  license :freemium
+  homepage 'https://www.synthesiagame.com/'
 
   app 'Synthesia.app'
-  app 'SynthesiaConfig.app'
+
+  zap trash: [
+               '~/Library/Application Support/Synthesia',
+               '~/Library/Autosave Information/com.synthesiallc.synthesia.plist',
+               '~/Library/Saved Application State/com.synthesiallc.synthesia.savedState',
+             ]
 end

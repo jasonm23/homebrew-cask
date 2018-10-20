@@ -1,12 +1,11 @@
-cask :v1 => 'chronicle' do
-  version :latest
-  sha256 :no_check
+cask 'chronicle' do
+  version '8.7.0'
+  sha256 '62b4124c8d7898a379698ebaa7820364790ef1590da896cd0515cd08af9acf0b'
 
-  url 'http://chronicleapp.com/static/downloads/chronicle.zip'
-  appcast 'http://www.littlefin.com/downloads/chronicle3.xml'
+  url "http://www.chronicleapp.com/static/downloads/chronicle#{version.major}.zip"
+  appcast "http://www.littlefin.com/downloads/chronicle#{version.major}.xml"
   name 'Chronicle'
   homepage 'http://chronicleapp.com/'
-  license :commercial
 
-  app 'Chronicle.app'
+  app "Chronicle #{version.major}.app"
 end

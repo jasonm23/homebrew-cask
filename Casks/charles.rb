@@ -1,16 +1,20 @@
-cask :v1 => 'charles' do
-  version '3.11.2'
-  sha256 'db0a7d9c318ed239bc3d32a96f73ebba80e75cd31954179be42019222ae6557d'
+cask 'charles' do
+  version '4.2.7'
+  sha256 'f2ce639c3564ce2180d595e5d9918acf536498cd2ed6f2b3f41172344142fceb'
 
-  url "http://www.charlesproxy.com/assets/release/#{version}/charles-proxy-#{version}.dmg"
+  url "https://www.charlesproxy.com/assets/release/#{version}/charles-proxy-#{version}.dmg"
+  appcast 'https://www.charlesproxy.com/latest.do'
   name 'Charles'
-  homepage 'http://www.charlesproxy.com/'
-  license :commercial
+  homepage 'https://www.charlesproxy.com/'
 
   app 'Charles.app'
 
-  zap :delete => [
-                  '~/Library/Application Support/Charles',
-                  '~/Library/Preferences/com.xk72.charles.config',
-                 ]
+  uninstall quit: 'com.xk72.Charles'
+
+  zap trash: [
+               '~/Library/Application Support/Charles',
+               '~/Library/Preferences/com.xk72.Charles.plist',
+               '~/Library/Preferences/com.xk72.charles.config',
+               '~/Library/Saved Application State/com.xk72.Charles.savedState',
+             ]
 end

@@ -1,12 +1,12 @@
-cask :v1 => 'baidumusic' do
+cask 'baidumusic' do
   version :latest
   sha256 :no_check
 
-  url 'http://music.baidu.com/player/mac/baidumusic_mac.dmg'
-  name '百度音乐'
+  # download.qianqian.com was verified as official when first introduced to the cask
+  url 'https://download.qianqian.com/channel/2/web_daohang'
   name 'Baidu Music'
-  homepage 'http://music.baidu.com/'
-  license :gratis
+  name '百度音乐'
+  homepage 'https://music.baidu.com/'
 
-  app '百度音乐.app'
+  app 'BaiduMusic.app'
 end

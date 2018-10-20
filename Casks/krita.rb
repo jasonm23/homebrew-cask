@@ -1,12 +1,20 @@
-cask :v1 => 'krita' do
-  version '2.9.9.0'
-  sha256 '9a4ef8e39f170ba3e81663f7049f1f136920048834628ff5cdd1cd0a4ec6b0b7'
+cask 'krita' do
+  version '4.1.5'
+  sha256 '51bab0590cc87352e1a0f83dcadba77d4d9595998c74c13f0fb411563fb1246a'
 
-  # kde.org is the official download host per the vendor homepage
-  url "http://files.kde.org/krita/osx/krita-#{version}.dmg"
+  # kde.org/stable/krita was verified as official when first introduced to the cask
+  url "https://download.kde.org/stable/krita/#{version}/krita-#{version}.dmg"
   name 'Krita'
   homepage 'https://krita.org/'
-  license :gpl
 
-  app 'Krita.app'
+  depends_on macos: '>= :el_capitan'
+
+  app 'krita.app'
+
+  zap trash: [
+               '~/Library/Application Support/krita',
+               '~/Library/Preferences/kritadisplayrc',
+               '~/Library/Preferences/kritarc',
+               '~/Library/Saved Application State/org.krita.savedState',
+             ]
 end

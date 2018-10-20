@@ -1,19 +1,14 @@
-cask :v1 => 'genymotion' do
-  version '2.5.2'
-  sha256 'b85f64c0d260befdb8a60132da98841cce2635cd8b72e5f254526603638095cb'
+cask 'genymotion' do
+  version '2.12.2'
+  sha256 '2e6fb9d047620c508d06be35a642b4942b5f7a05836b7b0c5ce4810823b71b50'
 
-  depends_on :cask => 'virtualbox'
-
-  url "http://files2.genymotion.com/genymotion/genymotion-#{version}/genymotion-#{version}.dmg"
+  url "https://dl.genymotion.com/releases/genymotion-#{version}/genymotion-#{version}.dmg"
   name 'Genymotion'
   homepage 'https://www.genymotion.com/'
-  license :commercial
+
+  depends_on cask: 'virtualbox'
 
   app 'Genymotion.app'
   app 'Genymotion Shell.app'
-  binary 'Genymotion Shell.app/Contents/MacOS/genyshell'
-
-  caveats do
-    files_in_usr_local
-  end
+  binary "#{appdir}/Genymotion Shell.app/Contents/MacOS/genyshell"
 end

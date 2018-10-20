@@ -1,13 +1,14 @@
-cask :v1 => 'lightworks' do
-  version '12.5.0'
-  sha256 '579a953a975de6b0c7b8c3608286576b835288444f14b06a08297f94602cd317'
+cask 'lightworks' do
+  version '14.0.0'
+  sha256 '06d64bee517bfb13bbb1d5739dfd184fd2931bb8c1fab835bc066cbb6c41192d'
 
-  url "https://www.lwks.com/dmpub/lightworks_v#{version}.dmg"
+  url "https://downloads.lwks.com/v#{version.major}/lightworks_v#{version}.dmg"
   name 'Lightworks'
-  homepage 'https://www.lwks.com'
-  license :freemium
+  homepage 'https://www.lwks.com/'
+
+  depends_on macos: '>= :mountain_lion'
 
   app 'Lightworks.app'
 
-  depends_on :macos => '>= 10.8'
+  zap trash: '~/Library/Saved Application State/com.editshare.lightworks.savedState'
 end

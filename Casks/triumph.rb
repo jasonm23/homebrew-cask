@@ -1,12 +1,10 @@
-cask :v1 => 'triumph' do
+cask 'triumph' do
   version :latest
   sha256 :no_check
 
-  url 'https://www.audiofile-engineering.com/triumph/download/Triumph.dmg'
+  url 'https://triumph.aurchitect.com/downloads/Triumph.zip'
   name 'Triumph'
-  homepage 'https://www.audiofile-engineering.com/triumph/'
-  license :commercial
+  homepage 'https://triumph.aurchitect.com/'
 
   app 'Triumph.app'
-  app 'Triumph.app/Contents/Applications/DDP Player.app'
 end

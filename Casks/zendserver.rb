@@ -1,16 +1,20 @@
-cask :v1 => 'zendserver' do
-  version '8.5.1'
-  sha256 '5a34d8ea941eed7bb981810bfee11f44ae27d0c9e40e50e8fd1c93b8781352c9'
+cask 'zendserver' do
+  version '9.1.1,7.1.7'
+  sha256 'b58779dee4adee264801c22387e95e73d3d97a62e994ca0a56d303225ad94a20'
 
-  url "http://downloads.zend.com/zendserver/#{version}/ZendServer-#{version}-php-5.6.10.dmg"
+  url "http://downloads.zend.com/zendserver/#{version.before_comma}/ZendServer-#{version.before_comma}-php-#{version.after_comma}.dmg"
   name 'Zend Server'
-  homepage 'https://www.zend.com/en/products/server/'
-  license :unknown    # todo: change license and remove this comment; ':unknown' is a machine-generated placeholder
+  homepage 'https://www.zend.com/en/products/zend_server'
 
   pkg 'Zend Server.pkg'
 
-  uninstall :script => { :executable => '/usr/local/zend/bin/uninstall.sh', :args => ['--automatic'] },
-            :pkgutil => 'zenith.pkg.ZendServer'
+  uninstall script:  {
+                       executable: '/usr/local/zend/bin/uninstall.sh',
+                       args:       ['--automatic'],
+                       sudo:       true,
+                     },
+            pkgutil: 'zenith.pkg.ZendServer'
+
   caveats do
     files_in_usr_local
   end

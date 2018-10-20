@@ -1,21 +1,14 @@
-cask :v1 => 'ableton-live-suite' do
-  version '9.5'
+cask 'ableton-live-suite' do
+  version '10.0.3'
+  sha256 '837c412594fea89bf2132792870eabe4f42776e0ea4f8faa54861885061a6d44'
 
-  if Hardware::CPU.is_32_bit?
-    sha256 '229e421cebd84673a351196d66e6bc92b336b58f5459979e4a6f1741f93d2891'
-    url "http://cdn2-downloads.ableton.com/channels/#{version}/ableton_live_suite_#{version}_32.dmg"
-  else
-    sha256 'c3fc7fbd79fb30a6d4f2b924f2c1015438d686c2fb3f2bf23f362dfd4244f072'
-    url "http://cdn2-downloads.ableton.com/channels/#{version}/ableton_live_suite_#{version}_64.dmg"
-  end
-
+  url "https://cdn-downloads.ableton.com/channels/#{version}/ableton_live_suite_#{version}_64.dmg"
+  appcast "https://www.ableton.com/en/release-notes/live-#{version.major}/"
   name 'Ableton Live Suite'
-  homepage 'http://ableton.com/en/live'
-  license :commercial
+  homepage 'https://www.ableton.com/en/live/'
 
-  app "Ableton Live #{version[0]} Suite.app"
+  app "Ableton Live #{version.major} Suite.app"
 
-  zap :delete => '~/Library/*/*[Aa]bleton*',
-      :rmdir => '~/Music/Ableton/Factory Packs'
-      #:trash => '~/Music/Ableton/User Library'
+  zap trash: '~/Library/*/*[Aa]bleton*',
+      rmdir: '~/Music/Ableton/Factory Packs'
 end

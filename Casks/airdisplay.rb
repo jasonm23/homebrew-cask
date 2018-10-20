@@ -1,15 +1,16 @@
-cask :v1 => 'airdisplay' do
-  version '3.0.1'
-  sha256 '2da921517a94872b6909b225d8964081a1bad9d2b93be12592bd264665f4b769'
+cask 'airdisplay' do
+  version '3.1'
+  sha256 '8e5743026352c982ecdd948b203026579b0d7f96442b203827372f1a8c3b2206'
 
-  url "https://www.avatron.com/updates/software/airdisplay/ad#{version.delete('.')}.zip"
+  url "https://www.avatron.com/updates/software/airdisplay/ad#{version.no_dots}.zip"
+  appcast 'https://avatron.com/updates/software/airdisplay/appcast.xml'
   name 'Air Display'
-  appcast 'https://www.avatron.com/updates/software/airdisplay/appcast.xml',
-          :sha256 => '5318742e7d9f7f4da9498e3100d8b5f92abc18a574988f1d5fa5a551ad0af062'
-  homepage 'https://avatron.com/apps/air-display/'
-  license :commercial
+  homepage 'https://avatron.com/applications/air-display/'
 
-  pkg 'Air Display Installer.pkg'
+  pkg 'Air Display Installer Signed.pkg'
 
-  uninstall :pkgutil => 'com.avatron.pkg.AirDisplay'
+  uninstall pkgutil: [
+                       'com.avatron.pkg.AirDisplay',
+                       'com.avatron.pkg.AirDisplayHost2',
+                     ]
 end

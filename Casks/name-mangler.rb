@@ -1,12 +1,13 @@
-cask :v1 => 'name-mangler' do
-  version :latest
-  sha256 :no_check
+cask 'name-mangler' do
+  version '3.4.1'
+  sha256 '040b98d0d0da0f4457b6186d9a3854165bf59dad3b45e61f5df6dbee4173c710'
 
-  url 'http://manytricks.com/download/namemangler'
-  appcast 'http://manytricks.com/namemangler/appcast.xml'
+  url 'https://manytricks.com/download/namemangler'
+  appcast 'https://manytricks.com/namemangler/appcast/'
   name 'Name Mangler'
-  homepage 'http://manytricks.com/namemangler/'
-  license :freemium
+  homepage 'https://manytricks.com/namemangler/'
+
+  auto_updates true
 
   app 'Name Mangler.app'
 end

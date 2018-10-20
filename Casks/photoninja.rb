@@ -1,12 +1,11 @@
-cask :v1 => 'photoninja' do
-  version '1.2.4RC'
-  sha256 '6bb3d42e319f318db9232478a043f59adfc73033234cfe38cea90c11bec6d1a9'
+cask 'photoninja' do
+  version '1.3.6b'
+  sha256 '68b89b21ae63817dedeb3a0647ffa413684028d179018fed33b39f16bbd333bb'
 
-  # cachefly.net is the official download host per the vendor homepage
+  # picturecode.cachefly.net was verified as official when first introduced to the cask
   url "https://picturecode.cachefly.net/photoninja/downloads/Install_PhotoNinja_#{version}.dmg"
   name 'Photo Ninja'
-  homepage 'http://www.picturecode.com/'
-  license :commercial
+  homepage 'https://www.picturecode.com/index.php'
 
-  app 'PhotoNinja.app'
+  app "PhotoNinja_#{version}.app"
 end

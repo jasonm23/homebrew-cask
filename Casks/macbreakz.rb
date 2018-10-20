@@ -1,12 +1,11 @@
-cask :v1 => 'macbreakz' do
-  version :latest
-  sha256 :no_check
+cask 'macbreakz' do
+  version '5.33'
+  sha256 'b03a578755d9df2be021653508f24171c5a33da275235dc74b78f8af0ffc1703'
 
-  url 'http://www.publicspace.net/download/MacBreakZ5.dmg'
-  appcast 'http://www.publicspace.net/app/signed_mb5.xml'
+  url "http://www.publicspace.net/download/MacBreakZ#{version.major}.dmg"
+  appcast "http://www.publicspace.net/app/signed_mb#{version.major}.xml"
   name 'MacBreakZ'
   homepage 'http://www.publicspace.net/MacBreakZ/'
-  license :commercial
 
-  app 'MacBreakZ 5.app'
+  app "MacBreakZ #{version.major}.app"
 end

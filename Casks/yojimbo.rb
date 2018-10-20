@@ -1,18 +1,12 @@
-cask :v1 => 'yojimbo' do
-  version '4.0.4'
-  sha256 '1da84ee26dffc3812ccf8bd2d9323e1dbd058be04648bf127f7f023d92039ecb'
+cask 'yojimbo' do
+  version '4.1.2'
+  sha256 '4c11c2c7cdb1ce513d58d6c1f0474541e7fa312cd07288eefad21024a134c9b6'
 
-  # amazonaws.com is the official download host per the vendor homepage
+  # amazonaws.com/BBSW-download was verified as official when first introduced to the cask
   url "https://s3.amazonaws.com/BBSW-download/Yojimbo_#{version}.dmg"
+  appcast 'https://versioncheck.barebones.com/Yojimbo.xml'
   name 'Yojimbo'
-  appcast 'https://versioncheck.barebones.com/Yojimbo.xml',
-          :sha256 => '20b638968b9c3d76a362758135d6a537de3a669b0811b3edd946204b343d86f6'
-  homepage 'http://www.barebones.com/products/yojimbo/'
-  license :unknown    # todo: change license and remove this comment; ':unknown' is a machine-generated placeholder
+  homepage 'https://www.barebones.com/products/yojimbo/'
 
   app 'Yojimbo.app'
-
-  postflight do
-    suppress_move_to_applications
-  end
 end

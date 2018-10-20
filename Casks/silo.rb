@@ -1,12 +1,10 @@
-cask :v1 => 'silo' do
-  version '2.3.02'
-  sha256 '7d84001382c3d12ad2f436fdb5572a60335a9e1dbac6505fd959fc776efaf365'
+cask 'silo' do
+  version '2.5.5'
+  sha256 '7d0a4af414dcfe623a76da5d23fa324651913b2258062e998274e336eb8c29f2'
 
-  url "https://nevercenter.com/download/Install_Silo_#{version.gsub('.','_')}_mac.zip"
+  url "https://nevercenter.com/silo/download_file/filearchive/Install_Silo_#{version.dots_to_underscores}_mac.dmg"
   name 'Silo'
   homepage 'https://nevercenter.com/silo/'
-  license :commercial
-  container :nested => "Install_Silo_#{version.gsub('.','_')}_mac.dmg"
 
-  app "Silo #{version.sub(%r{^(\d+\.\d+).*},'\1')}.app"
+  app "Silo #{version.major}.app"
 end

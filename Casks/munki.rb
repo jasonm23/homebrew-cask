@@ -1,15 +1,18 @@
-cask :v1 => 'munki' do
-  version '2.4.0.2561'
-  sha256 '7fc73752855099185627374904388a61f4c18450e53ca674455b168719197bdf'
+cask 'munki' do
+  version '3.4.1.3557'
+  sha256 '3da472f032a2bd1e37ccaca9d8398f382fe5c0f16f654fe71fb632cd2b7e9bf8'
 
-  # github.com is the official download host per the vendor homepage
-  url "https://github.com/munki/munki/releases/download/v#{version.sub(%r{^(\d+\.\d+.\d+).*},'\1')}/munkitools-#{version}.pkg"
+  # github.com/munki/munki was verified as official when first introduced to the cask
+  url "https://github.com/munki/munki/releases/download/v#{version.major_minor_patch}/munkitools-#{version}.pkg"
   appcast 'https://github.com/munki/munki/releases.atom'
   name 'Munki'
   homepage 'https://www.munki.org/munki/'
-  license :apache
 
   pkg "munkitools-#{version}.pkg"
 
-  uninstall :pkgutil => 'com.googlecode.munki.*'
+  uninstall pkgutil:   'com.googlecode.munki.*',
+            launchctl: [
+                         'com.googlecode.munki.app_usage_monitor',
+                         'com.googlecode.munki.appusaged',
+                       ]
 end

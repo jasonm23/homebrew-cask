@@ -1,13 +1,16 @@
-cask :v1 => 'keepassx' do
-  version '2.0-beta2'
-  sha256 'ae4a40796b12496440aa6781534930f0f80ec175cd6ff03daf3481ad6e013f50'
+cask 'keepassx' do
+  version '2.0.3'
+  sha256 '44271fef18fd07a29241e5324be407fa8edce77fb0b55c5646cd238092cdf823'
 
-  url "https://www.keepassx.org/dev/attachments/download/117/KeePassX-#{version}.dmg"
+  url "https://www.keepassx.org/releases/#{version}/KeePassX-#{version}.dmg"
   name 'KeePassX'
-  homepage 'http://www.keepassx.org'
-  license :bsd
+  homepage 'https://www.keepassx.org/'
 
   app 'KeePassX.app'
 
-  zap :delete => '~/.keepassx'
+  uninstall_preflight do
+    set_ownership "#{appdir}/KeePassX.app"
+  end
+
+  zap trash: '~/.keepassx'
 end
